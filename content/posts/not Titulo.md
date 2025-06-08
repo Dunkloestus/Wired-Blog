@@ -37,3 +37,9 @@ markdown test
 
 
 ![[Pasted image 20250608140926.png|Pasted image 20250608140926.png]]
+
+
+safasf
+
+
+![[Pasted image 20250608174726.png|Pasted image 20250608174726.png]]
