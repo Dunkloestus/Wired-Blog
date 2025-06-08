@@ -10,7 +10,10 @@ tags:
   - test
   - code
   - input
-menu: "Logs"
+menu: '"Logs"'
+toc: "true"
+readingTime: "true"
+author: Dunkloestus
 ---
 # Maybe is more easier 
 
