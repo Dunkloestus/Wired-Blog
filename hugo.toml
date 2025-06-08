@@ -70,11 +70,11 @@ pagerSize = 5
         #  identifier = "about"
          # name = "Identity"
           #url = "/about"
-       # [[languages.en.menu.main]]
-       #   identifier = "posts"
-        #  name = "Logs"
-        #  url = "/posts"
         [[languages.en.menu.main]]
+          identifier = "posts"
+          name = "Logs"
+          url = "/posts"
+        #[[languages.en.menu.main]]
           identifier = "archive"
           name = "Archive"
           url = "/content/posts/"
