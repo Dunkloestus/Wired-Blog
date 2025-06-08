@@ -1,4 +1,5 @@
-/* Red Logo + Green Text Terminal Theme - FIXED LOGO */
+
+/* Red Logo + Green Text Terminal Theme - WITH ANIMATED SCANLINES */
 :root {
   --accent: #ff5555;
   --background: #000000;
@@ -16,11 +17,12 @@
   --background-color: #000000;
 }
 
-/* Pure black background */
+/* Pure black background with CRT effect */
 body {
   background-color: #000000 !important;
   color: #00ff00;
   font-family: "Fira Code", "Courier New", monospace;
+  overflow-x: hidden;
 }
 
 /* Remove any color tints */
@@ -30,10 +32,42 @@ body {
   background-color: #000000 !important;
 }
 
+/* Container with CRT monitor effect */
+.container {
+  position: relative;
+  background-color: #000000;
+  border-radius: 8px;
+  box-shadow: 
+    inset 0 0 50px rgba(0, 255, 0, 0.1),
+    0 0 50px rgba(0, 0, 0, 0.8);
+}
+
 /* Header styling */
 .header {
   background-color: #000000 !important;
   border-bottom: 2px solid #ff5555;
+  position: relative;
+}
+
+/* CRT noise effect on header */
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.02' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  animation: crt-noise 0.1s infinite;
+}
+
+/* CRT noise animation */
+@keyframes crt-noise {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
 }
 
 /* FIXED LOGO - Work with Terminal theme structure */
@@ -46,6 +80,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   display: inline-block;
+  position: relative;
+  z-index: 2;
 }
 
 .logo a {
@@ -68,7 +104,7 @@ body {
   font-family: "Fira Code", monospace;
   font-size: 14px;
   line-height: 1;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Alternative approach - if above doesn't work */
@@ -96,18 +132,52 @@ body {
   color: #ff5555;
 }
 
-/* Main content text - GREEN */
+/* Main content text - GREEN with enhanced glow */
 .content {
   color: #00ff00 !important;
-  text-shadow: 0 0 2px #00ff00;
-  animation: textFlicker 3s infinite;
+  text-shadow: 
+    0 0 2px #00ff00,
+    0 0 4px #00ff00,
+    0 0 8px rgba(0, 255, 0, 0.3);
+  animation: 
+    textFlicker 3s infinite,
+    phosphor-glow 2s ease-in-out infinite alternate;
 }
 
-/* Terminal-like text flicker effect */
+/* Enhanced terminal text flicker */
 @keyframes textFlicker {
   0%, 98% { opacity: 1; }
   99% { opacity: 0.98; }
   100% { opacity: 1; }
+}
+
+/* Phosphor glow animation */
+@keyframes phosphor-glow {
+  0% {
+    text-shadow: 
+      0 0 2px #00ff00,
+      0 0 4px #00ff00,
+      0 0 8px rgba(0, 255, 0, 0.3);
+  }
+  100% {
+    text-shadow: 
+      0 0 3px #00ff00,
+      0 0 6px #00ff00,
+      0 0 12px rgba(0, 255, 0, 0.5);
+  }
+}
+
+/* Phosphor glow effect for headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #ff5555 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #ff5555;
+  padding-bottom: 8px;
+  text-shadow: 
+    0 0 2px currentColor,
+    0 0 4px currentColor,
+    0 0 8px rgba(255, 85, 85, 0.3);
 }
 
 /* Links - red accents with green base */
@@ -121,18 +191,12 @@ a:hover {
   text-shadow: 0 0 5px #00ff00;
 }
 
-/* Headings - red accents */
-h1, h2, h3, h4, h5, h6 {
-  color: #ff5555 !important;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 1px solid #ff5555;
-  padding-bottom: 8px;
-}
-
 /* Content paragraphs - GREEN */
 p, .content p {
   color: #00ff00 !important;
+  text-shadow: 
+    0 0 2px #00ff00,
+    0 0 4px rgba(0, 255, 0, 0.3);
 }
 
 /* Content lists - GREEN */
@@ -264,18 +328,70 @@ blockquote {
   color: #000000;
 }
 
-/* Terminal scanlines effect - green tint */
+/* ===== ANIMATED CRT SCANLINES EFFECT ===== */
+
+/* Moving scanlines overlay */
 .container::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(transparent 50%, rgba(0, 255, 0, 0.03) 50%);
-  background-size: 100% 4px;
+  height: 200%; /* Double height for smooth movement */
+  background: 
+    linear-gradient(
+      transparent 0%,
+      rgba(0, 255, 0, 0.03) 0.5%,
+      transparent 1%,
+      transparent 1.5%,
+      rgba(0, 255, 0, 0.02) 2%,
+      transparent 2.5%,
+      transparent 3%
+    );
+  background-size: 100% 6px; /* Scanline height */
   pointer-events: none;
   z-index: 1000;
+  animation: scanlines-move 3s linear infinite;
+}
+
+/* Scanlines movement animation */
+@keyframes scanlines-move {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Additional CRT screen flicker */
+.container::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 85, 85, 0.01) 50%,
+      transparent 100%
+    );
+  pointer-events: none;
+  z-index: 999;
+  animation: screen-flicker 0.15s infinite linear alternate;
+}
+
+/* Screen flicker animation */
+@keyframes screen-flicker {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.98;
+  }
 }
 
 /* Terminal cursor blink effect for headers - RED */
