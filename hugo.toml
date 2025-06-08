@@ -75,9 +75,9 @@ pagerSize = 5
           name = "Logs"
           url = "/posts"
         #[[languages.en.menu.main]]
-          identifier = "archive"
-          name = "Archive"
-          url = "/content/posts/"
+         # identifier = "archive"
+          #name = "Archive"
+          #url = "/content/posts/"
 
 # Hugo Module configuration
 [module]
