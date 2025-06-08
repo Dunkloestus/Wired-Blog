@@ -68,10 +68,6 @@ pagerSize = 5
 
       [languages.en.menu]
         [[languages.en.menu.main]]
-          identifier = "about"
-          name = "Identity"
-          url = "/about"
-        [[languages.en.menu.main]]
           identifier = "posts"
           name = "Logs"
           url = "/posts"
