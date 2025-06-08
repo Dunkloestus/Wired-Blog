@@ -60,3 +60,6 @@ safasf
 
 
 ![lain](/images/7.png)
+
+
+{{< image src="/img/7.png" alt="Hello Friend" position="center" style="border-radius: 8px;">}}
