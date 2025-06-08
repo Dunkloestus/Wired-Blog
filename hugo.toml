@@ -1,7 +1,6 @@
-baseURL = "https://dunkloestus.github.io/Wired-Blog"
+baseURL = "https://dunkloestus.github.io/Wired-Blog/"
 languageCode = "en-us"
 title = "Present Day, Present Time"
-# REMOVED: theme = "terminal" ← This line causes the error when using Hugo Modules
 
 # Enable pagination
 [pagination]
@@ -49,9 +48,9 @@ pagerSize = 5
     
     [languages.en.params]
       subtitle = "And you don't seem to understand..."
-      owner = "Your Name"
-      keywords = "blog, cyberpunk, technology, thoughts"
-      copyright = "© Present Day"
+      owner = "Dunkloestus"
+      keywords = "blog, cyberpunk, technology, thoughts, lain"
+      copyright = "© Present Day, Present Time"
       menuMore = "Show more"
       readMore = "Continue reading"
       readOtherPosts = "Other transmissions"
@@ -64,19 +63,23 @@ pagerSize = 5
 
       [languages.en.params.logo]
         logoText = "Wired-Blog"
-        logoHomeLink = "https://dunkloestus.github.io/Wired-Blog"
+        logoHomeLink = "/Wired-Blog/"  # ← Fixed: Added /Wired-Blog/ subdirectory
 
       [languages.en.menu]
-        [[languages.en.menu.main]]
-          identifier = "posts"
-          name = "Logs"
-          url = "/posts"
+      ##  [[languages.en.menu.main]]
+        #  identifier = "about"
+         # name = "Identity"
+          #url = "/about"
+       # [[languages.en.menu.main]]
+       #   identifier = "posts"
+        #  name = "Logs"
+        #  url = "/posts"
         [[languages.en.menu.main]]
           identifier = "archive"
           name = "Archive"
           url = "/content/posts"
 
-# Hugo Module configuration (this replaces the theme declaration)
+# Hugo Module configuration
 [module]
   [[module.imports]]
     path = 'github.com/panr/hugo-theme-terminal/v4'
