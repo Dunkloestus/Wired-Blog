@@ -111,3 +111,23 @@ safasf
 
 {{< image src="/img/7.png" alt="Hello Friend22" position="center" style="border-radius: 8px;">}}
 {{< image src="/img/27.png" alt="Hello Friend22" position="center" style="border-radius: 8px;">}}
+
+
+
+------
+
+
+
+## Testing
+
+
+Images Hugo shortcode test:
+
+{{< image src="/img/7.png" alt="Hello Friend" position="center" style="border-radius: 8px;" >}} 
+
+Standard markdown test: 
+
+![Description](/img/7.png) 
+Another test: 
+
+{{< image src="/img/27.png" alt="Another Friend" position="center" style="border-radius: 8px;" >}}
