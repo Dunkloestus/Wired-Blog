@@ -74,7 +74,7 @@ pagerSize = 5
         [[languages.en.menu.main]]
           identifier = "archive"
           name = "Archive"
-          url = "/archive"
+          url = "/content"
 
 # Hugo Module configuration (this replaces the theme declaration)
 [module]
