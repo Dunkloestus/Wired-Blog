@@ -73,3 +73,9 @@ safasf
 
 
 ![lain2](/img/27.png)
+
+
+{{< image src="/img/27.png" alt="Hello Friend" position="center" style="border-radius: 8px;">}}
+
+
+{{< image src="/img/7.png" alt="Hello Friend" position="center" style="border-radius: 8px;">}}
