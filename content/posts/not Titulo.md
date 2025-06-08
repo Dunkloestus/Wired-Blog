@@ -19,3 +19,17 @@ author: Dunkloestus
 
 If I just keep doing practice over and over
  so test 2 must be under Logs and as a post
+
+## 1
+
+### 2 
+
+#### 3
+
+and so on test 
+
+
+markdown test
+
+`printf "hello world" `
+
