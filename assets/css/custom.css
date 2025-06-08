@@ -1,10 +1,4 @@
-# Red Terminal Theme with Black Background
 
-## Update Your Custom CSS
-
-Replace your `assets/css/custom.css` with this red theme version:
-
-```css
 /* Red Terminal Theme with Pure Black Background */
 :root {
   --accent: #ff5555;
@@ -305,36 +299,3 @@ ol li::marker {
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
 }
-```
-
-## How to Apply This
-
-### Method 1: Update via GitHub (Easiest)
-
-1. **Go to your repository**
-2. **Navigate to**: `assets/css/custom.css`
-3. **Click Edit** (pencil icon)
-4. **Replace all content** with the CSS above
-5. **Commit changes**
-
-### Method 2: Create New File (If it doesn't exist)
-
-1. **Go to your repository**
-2. **Click**: Add file → Create new file
-3. **Name**: `assets/css/custom.css`
-4. **Paste** the CSS content above
-5. **Commit**
-
-## What This Gives You
-
-✅ **Red Terminal Theme**: Just like the red variant in your image
-✅ **Pure Black Background**: Maintains your current console black
-✅ **Red Logo Background**: Matches the Terminal theme logo style
-✅ **Red Accents**: Headers, links, borders all in red
-✅ **Terminal Effects**: Cursor blink, scanlines, flicker
-✅ **Consistent Styling**: Navigation, code blocks, everything themed
-
-## Expected Result
-
-After applying this CSS:
-- **Logo**: Red background with black text (like Terminal theme)
