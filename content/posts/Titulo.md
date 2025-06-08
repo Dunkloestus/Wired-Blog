@@ -12,6 +12,7 @@ author: "Dunkloestus"
 description: "And you don't seem to understand..."
 toc: true
 readingTime: true
+menu: main
 ---
 This is a test
 or not?
