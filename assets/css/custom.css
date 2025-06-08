@@ -1,4 +1,4 @@
-/* Red Logo + Green Text Terminal Theme - Serial Experiments Lain Style */
+/* Red Logo + Green Text Terminal Theme - FIXED LOGO */
 :root {
   --accent: #ff5555;
   --background: #000000;
@@ -19,7 +19,7 @@
 /* Pure black background */
 body {
   background-color: #000000 !important;
-  color: #00ff00;  /* Green text for content */
+  color: #00ff00;
   font-family: "Fira Code", "Courier New", monospace;
 }
 
@@ -33,57 +33,72 @@ body {
 /* Header styling */
 .header {
   background-color: #000000 !important;
-  border-bottom: 2px solid #ff5555;  /* Red line */
+  border-bottom: 2px solid #ff5555;
 }
 
-/* Logo styling - RED background with black text */
+/* FIXED LOGO - Work with Terminal theme structure */
 .logo {
-  background-color: #ff5555 !important;  /* Red background */
-  color: #000000 !important;  /* Black text */
+  background-color: #ff5555 !important;
+  color: #000000 !important;
   padding: 8px 16px;
   border-radius: 0;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+  display: inline-block;
 }
 
 .logo a {
-  color: #000000 !important;  /* Black text */
+  color: #000000 !important;
   text-decoration: none;
+  display: inline;
 }
 
 .logo a:hover {
   color: #000000 !important;
 }
 
-/* Logo decorative lines - CHANGE YELLOW TO RED */
-.logo::after {
+/* FIXED: Terminal decorative lines - RED instead of yellow */
+.header::after {
   content: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
-  color: #ff5555 !important;  /* RED lines instead of yellow */
-  margin-left: 10px;
-  font-weight: normal;
+  color: #ff5555 !important;
+  position: absolute;
+  top: 8px;
+  left: 200px;
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1;
+  z-index: 1;
 }
 
-/* Navigation menu - red accents */
+/* Alternative approach - if above doesn't work */
+.header-inner::after {
+  content: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
+  color: #ff5555 !important;
+  margin-left: 10px;
+  font-family: "Fira Code", monospace;
+}
+
+/* Navigation menu */
 .menu {
-  color: #00ff00;  /* Green text */
+  color: #00ff00;
 }
 
 .menu a {
-  color: #00ff00;  /* Green menu text */
+  color: #00ff00;
   border-bottom: 2px solid transparent;
   text-transform: uppercase;
   font-weight: bold;
 }
 
 .menu a:hover {
-  border-bottom-color: #ff5555;  /* Red hover underline */
-  color: #ff5555;  /* Red hover text */
+  border-bottom-color: #ff5555;
+  color: #ff5555;
 }
 
 /* Main content text - GREEN */
 .content {
-  color: #00ff00 !important;  /* Green text for content */
+  color: #00ff00 !important;
   text-shadow: 0 0 2px #00ff00;
   animation: textFlicker 3s infinite;
 }
@@ -97,18 +112,18 @@ body {
 
 /* Links - red accents with green base */
 a {
-  color: #ff5555;  /* Red links */
+  color: #ff5555;
   transition: all 0.3s ease;
 }
 
 a:hover {
-  color: #00ff00;  /* Green on hover */
+  color: #00ff00;
   text-shadow: 0 0 5px #00ff00;
 }
 
 /* Headings - red accents */
 h1, h2, h3, h4, h5, h6 {
-  color: #ff5555 !important;  /* Red headings */
+  color: #ff5555 !important;
   text-transform: uppercase;
   letter-spacing: 1px;
   border-bottom: 1px solid #ff5555;
@@ -117,35 +132,35 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Content paragraphs - GREEN */
 p, .content p {
-  color: #00ff00 !important;  /* Green paragraph text */
+  color: #00ff00 !important;
 }
 
 /* Content lists - GREEN */
 ul, ol, li {
-  color: #00ff00 !important;  /* Green list text */
+  color: #00ff00 !important;
 }
 
 /* Code blocks - green with red borders */
 pre {
-  background-color: #001100;  /* Dark green background */
-  border: 1px solid #ff5555;  /* Red border */
+  background-color: #001100;
+  border: 1px solid #ff5555;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(255, 85, 85, 0.3);
-  color: #00ff00;  /* Green code text */
+  color: #00ff00;
 }
 
 code {
-  background-color: #001100;  /* Dark green background */
-  color: #00ff00;  /* Green code text */
+  background-color: #001100;
+  color: #00ff00;
   padding: 2px 4px;
   border-radius: 2px;
-  border: 1px solid #ff5555;  /* Red border */
+  border: 1px solid #ff5555;
 }
 
 /* Inline code - green text */
 p code, li code {
   background-color: #001100;
-  color: #00ff00 !important;  /* Green inline code */
+  color: #00ff00 !important;
   padding: 2px 6px;
   border: 1px solid #ff5555;
   border-radius: 2px;
@@ -153,10 +168,10 @@ p code, li code {
 
 /* Blockquotes - green text with red accent */
 blockquote {
-  border-left: 4px solid #ff5555;  /* Red left border */
+  border-left: 4px solid #ff5555;
   padding-left: 20px;
-  color: #00ff00 !important;  /* Green quote text */
-  background-color: #001100;  /* Dark green background */
+  color: #00ff00 !important;
+  background-color: #001100;
   margin: 20px 0;
   padding: 15px 20px;
 }
@@ -165,65 +180,65 @@ blockquote {
 .post-date,
 .post-author,
 .reading-time {
-  color: #00ff00 !important;  /* Green metadata */
+  color: #00ff00 !important;
 }
 
 /* Footer - green text */
 .footer {
   background-color: #000000 !important;
-  border-top: 1px solid #ff5555;  /* Red border */
-  color: #00ff00 !important;  /* Green footer text */
+  border-top: 1px solid #ff5555;
+  color: #00ff00 !important;
 }
 
 /* Pagination - mixed colors */
 .pagination {
-  color: #00ff00;  /* Green text */
+  color: #00ff00;
 }
 
 .pagination a {
-  color: #00ff00;  /* Green pagination text */
-  border: 1px solid #ff5555;  /* Red borders */
+  color: #00ff00;
+  border: 1px solid #ff5555;
   padding: 8px 16px;
   margin: 0 4px;
   background-color: #000000;
 }
 
 .pagination a:hover {
-  background-color: #ff5555;  /* Red hover background */
-  color: #000000;  /* Black hover text */
+  background-color: #ff5555;
+  color: #000000;
 }
 
 /* Table of contents - green text, red accents */
 .toc {
   background-color: #001100;
-  border: 1px solid #ff5555;  /* Red border */
-  color: #00ff00;  /* Green text */
+  border: 1px solid #ff5555;
+  color: #00ff00;
 }
 
 .toc a {
-  color: #00ff00 !important;  /* Green TOC links */
+  color: #00ff00 !important;
 }
 
 .toc a:hover {
-  color: #ff5555 !important;  /* Red hover */
+  color: #ff5555 !important;
 }
 
 /* Post list - green text, red titles */
 .post-title a {
-  color: #ff5555;  /* Red post titles */
+  color: #ff5555;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .post-title a:hover {
-  color: #00ff00;  /* Green hover */
+  color: #00ff00;
   text-shadow: 0 0 5px #00ff00;
 }
 
 /* Archive page - green theme */
 .archive-entry {
   border-bottom: 1px solid #333333;
-  color: #00ff00 !important;  /* Green archive text */
+  color: #00ff00 !important;
 }
 
 .archive-entry:hover {
@@ -233,8 +248,8 @@ blockquote {
 /* Tags and categories - red background, black text */
 .tag,
 .category {
-  background-color: #ff5555;  /* Red background */
-  color: #000000;  /* Black text */
+  background-color: #ff5555;
+  color: #000000;
   padding: 2px 8px;
   border-radius: 2px;
   text-transform: uppercase;
@@ -245,8 +260,8 @@ blockquote {
 
 .tag:hover,
 .category:hover {
-  background-color: #00ff00;  /* Green hover background */
-  color: #000000;  /* Black text */
+  background-color: #00ff00;
+  color: #000000;
 }
 
 /* Terminal scanlines effect - green tint */
@@ -257,7 +272,7 @@ blockquote {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(transparent 50%, rgba(0, 255, 0, 0.03) 50%);  /* Green scanlines */
+  background: linear-gradient(transparent 50%, rgba(0, 255, 0, 0.03) 50%);
   background-size: 100% 4px;
   pointer-events: none;
   z-index: 1000;
@@ -268,7 +283,7 @@ h1::after,
 h2::after {
   content: "_";
   animation: blink 1s infinite;
-  color: #ff5555 !important;  /* Red cursor */
+  color: #ff5555 !important;
 }
 
 @keyframes blink {
@@ -278,20 +293,20 @@ h2::after {
 
 /* Special terminal prompt styling - GREEN */
 .terminal-prompt {
-  color: #00ff00 !important;  /* Green terminal prompt */
+  color: #00ff00 !important;
   font-family: "Fira Code", monospace;
 }
 
 .terminal-prompt::before {
   content: "> ";
-  color: #ff5555;  /* Red prompt symbol */
+  color: #ff5555;
   font-weight: bold;
 }
 
 /* Lists - green text, red markers */
 ul li::marker,
 ol li::marker {
-  color: #ff5555;  /* Red list markers */
+  color: #ff5555;
 }
 
 /* Selection highlight - red background */
