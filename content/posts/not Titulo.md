@@ -36,13 +36,13 @@ markdown test
 ñyfljhlñsdkfghklsfdglsdflghndfkglhdflgdfihsl
 
 
-![Pasted image 20250608140926.png]((/images/Pasted%20image%2020250608140926.png)
+![[(/images/Pasted image 20250608140926.png|(/images/Pasted image 20250608140926.png]]
 
 
 safasf
 
 
-![Pasted image 20250608174726.png](Pasted%20image%2020250608174726.png)
+![[Pasted image 20250608174726.png|Pasted image 20250608174726.png]]
 
 
 
@@ -106,3 +106,8 @@ safasf
 
 
 ![Description](/img/7.png)
+
+
+
+{{< image src="/img/7.png" alt="Hello Friend22" position="center" style="border-radius: 8px;">}}
+{{< image src="/img/27.png" alt="Hello Friend22" position="center" style="border-radius: 8px;">}}
