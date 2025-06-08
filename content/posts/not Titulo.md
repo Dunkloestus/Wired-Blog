@@ -10,7 +10,7 @@ tags:
   - test
   - code
   - input
-menu: '"Logs"'
+menu: "Logs"
 ---
 # Maybe is more easier 
 
