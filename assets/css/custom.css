@@ -1,0 +1,150 @@
+/* Serial Experiments Lain inspired theme */
+:root {
+  --accent: #ff0040;
+  --background: #000000;
+  --color: #00ff00;
+  --border-color: #ff0040;
+  --background-color: #000000;
+}
+
+/* Dark theme override */
+[data-theme="dark"] {
+  --accent: #ff0040;
+  --background: #000000;
+  --color: #00ff00;
+  --border-color: #ff0040;
+}
+
+/* Body styling */
+body {
+  background-color: #000000;
+  color: #00ff00;
+  font-family: "Fira Code", "Courier New", monospace;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #001100 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #110000 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Terminal-like text effect */
+.content {
+  text-shadow: 0 0 2px #00ff00;
+  animation: textFlicker 3s infinite;
+}
+
+@keyframes textFlicker {
+  0%, 98% { opacity: 1; }
+  99% { opacity: 0.98; }
+  100% { opacity: 1; }
+}
+
+/* Header styling */
+.header {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-bottom: 2px solid #ff0040;
+}
+
+/* Links */
+a {
+  color: #ff0040;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+/* Code blocks */
+pre {
+  background-color: #001100;
+  border: 1px solid #ff0040;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 0, 64, 0.3);
+}
+
+code {
+  background-color: #001100;
+  color: #00ff00;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+/* Navigation menu */
+.menu {
+  color: #ff0040;
+}
+
+.menu a {
+  color: #ff0040;
+  border-bottom: 2px solid transparent;
+}
+
+.menu a:hover {
+  border-bottom-color: #00ff00;
+  color: #00ff00;
+}
+
+/* Post titles */
+h1, h2, h3, h4, h5, h6 {
+  color: #ff0040;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Retro scanlines effect */
+.container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent 50%, rgba(0, 255, 0, 0.03) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Glitch effect for logo */
+.logo {
+  position: relative;
+}
+
+.logo::before,
+.logo::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.logo::before {
+  animation: glitch-1 0.5s infinite;
+  color: #ff0040;
+  z-index: -1;
+}
+
+.logo::after {
+  animation: glitch-2 0.5s infinite;
+  color: #00ff00;
+  z-index: -2;
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(-2px, 2px); }
+  80% { transform: translate(-2px, -2px); }
+}
