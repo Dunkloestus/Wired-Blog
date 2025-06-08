@@ -66,3 +66,10 @@ safasf
 
 
 {{< image src="/images/7.png" alt="Hello Friend" position="center" style="border-radius: 8px;">}}
+
+
+
+![](/img/27.png)
+
+
+![lain2](/img/27.png)
