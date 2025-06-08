@@ -64,7 +64,7 @@ pagerSize = 5
 
       [languages.en.params.logo]
         logoText = "Wired-Blog"
-        logoHomeLink = "/"
+        logoHomeLink = "https://dunkloestus.github.io/Wired-Blog"
 
       [languages.en.menu]
         [[languages.en.menu.main]]
