@@ -1,9 +1,8 @@
-
-/* Red Terminal Theme with Pure Black Background */
+/* Red Logo + Green Text Terminal Theme - Serial Experiments Lain Style */
 :root {
   --accent: #ff5555;
   --background: #000000;
-  --color: #ff5555;
+  --color: #00ff00;
   --border-color: #ff5555;
   --background-color: #000000;
 }
@@ -12,7 +11,7 @@
 [data-theme="dark"] {
   --accent: #ff5555;
   --background: #000000;
-  --color: #ff5555;
+  --color: #00ff00;
   --border-color: #ff5555;
   --background-color: #000000;
 }
@@ -20,7 +19,7 @@
 /* Pure black background */
 body {
   background-color: #000000 !important;
-  color: #ff5555;
+  color: #00ff00;  /* Green text for content */
   font-family: "Fira Code", "Courier New", monospace;
 }
 
@@ -31,16 +30,16 @@ body {
   background-color: #000000 !important;
 }
 
-/* Header styling with red theme */
+/* Header styling */
 .header {
   background-color: #000000 !important;
-  border-bottom: 2px solid #ff5555;
+  border-bottom: 2px solid #ff5555;  /* Red line */
 }
 
-/* Logo styling - red background like in the theme preview */
+/* Logo styling - RED background with black text */
 .logo {
-  background-color: #ff5555 !important;
-  color: #000000 !important;
+  background-color: #ff5555 !important;  /* Red background */
+  color: #000000 !important;  /* Black text */
   padding: 8px 16px;
   border-radius: 0;
   font-weight: bold;
@@ -49,7 +48,7 @@ body {
 }
 
 .logo a {
-  color: #000000 !important;
+  color: #000000 !important;  /* Black text */
   text-decoration: none;
 }
 
@@ -57,27 +56,35 @@ body {
   color: #000000 !important;
 }
 
-/* Navigation menu - red theme */
+/* Logo decorative lines - CHANGE YELLOW TO RED */
+.logo::after {
+  content: "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
+  color: #ff5555 !important;  /* RED lines instead of yellow */
+  margin-left: 10px;
+  font-weight: normal;
+}
+
+/* Navigation menu - red accents */
 .menu {
-  color: #ff5555;
+  color: #00ff00;  /* Green text */
 }
 
 .menu a {
-  color: #ff5555;
+  color: #00ff00;  /* Green menu text */
   border-bottom: 2px solid transparent;
   text-transform: uppercase;
   font-weight: bold;
 }
 
 .menu a:hover {
-  border-bottom-color: #ff5555;
-  color: #ffffff;
+  border-bottom-color: #ff5555;  /* Red hover underline */
+  color: #ff5555;  /* Red hover text */
 }
 
-/* Main content text - red theme */
+/* Main content text - GREEN */
 .content {
-  color: #ff5555;
-  text-shadow: 0 0 2px #ff5555;
+  color: #00ff00 !important;  /* Green text for content */
+  text-shadow: 0 0 2px #00ff00;
   animation: textFlicker 3s infinite;
 }
 
@@ -88,135 +95,146 @@ body {
   100% { opacity: 1; }
 }
 
-/* Links - red theme with hover effects */
+/* Links - red accents with green base */
 a {
-  color: #ff5555;
+  color: #ff5555;  /* Red links */
   transition: all 0.3s ease;
 }
 
 a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 5px #ff5555;
+  color: #00ff00;  /* Green on hover */
+  text-shadow: 0 0 5px #00ff00;
 }
 
-/* Headings - red theme */
+/* Headings - red accents */
 h1, h2, h3, h4, h5, h6 {
-  color: #ff5555;
+  color: #ff5555 !important;  /* Red headings */
   text-transform: uppercase;
   letter-spacing: 1px;
   border-bottom: 1px solid #ff5555;
   padding-bottom: 8px;
 }
 
-/* Code blocks - red theme */
+/* Content paragraphs - GREEN */
+p, .content p {
+  color: #00ff00 !important;  /* Green paragraph text */
+}
+
+/* Content lists - GREEN */
+ul, ol, li {
+  color: #00ff00 !important;  /* Green list text */
+}
+
+/* Code blocks - green with red borders */
 pre {
-  background-color: #111111;
-  border: 1px solid #ff5555;
+  background-color: #001100;  /* Dark green background */
+  border: 1px solid #ff5555;  /* Red border */
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(255, 85, 85, 0.3);
-  color: #ff5555;
+  color: #00ff00;  /* Green code text */
 }
 
 code {
-  background-color: #111111;
-  color: #ff5555;
+  background-color: #001100;  /* Dark green background */
+  color: #00ff00;  /* Green code text */
   padding: 2px 4px;
   border-radius: 2px;
-  border: 1px solid #ff5555;
+  border: 1px solid #ff5555;  /* Red border */
 }
 
-/* Inline code */
+/* Inline code - green text */
 p code, li code {
-  background-color: #111111;
-  color: #ff5555;
+  background-color: #001100;
+  color: #00ff00 !important;  /* Green inline code */
   padding: 2px 6px;
   border: 1px solid #ff5555;
   border-radius: 2px;
 }
 
-/* Blockquotes - red theme */
+/* Blockquotes - green text with red accent */
 blockquote {
-  border-left: 4px solid #ff5555;
+  border-left: 4px solid #ff5555;  /* Red left border */
   padding-left: 20px;
-  color: #ffffff;
-  background-color: #111111;
+  color: #00ff00 !important;  /* Green quote text */
+  background-color: #001100;  /* Dark green background */
   margin: 20px 0;
   padding: 15px 20px;
 }
 
-/* Post metadata - red theme */
+/* Post metadata - green */
 .post-date,
 .post-author,
 .reading-time {
-  color: #ff5555;
+  color: #00ff00 !important;  /* Green metadata */
 }
 
-/* Footer - red theme */
+/* Footer - green text */
 .footer {
   background-color: #000000 !important;
-  border-top: 1px solid #ff5555;
-  color: #ff5555;
+  border-top: 1px solid #ff5555;  /* Red border */
+  color: #00ff00 !important;  /* Green footer text */
 }
 
-/* Pagination - red theme */
+/* Pagination - mixed colors */
 .pagination {
-  color: #ff5555;
+  color: #00ff00;  /* Green text */
 }
 
 .pagination a {
-  color: #ff5555;
-  border: 1px solid #ff5555;
+  color: #00ff00;  /* Green pagination text */
+  border: 1px solid #ff5555;  /* Red borders */
   padding: 8px 16px;
   margin: 0 4px;
   background-color: #000000;
 }
 
 .pagination a:hover {
-  background-color: #ff5555;
-  color: #000000;
+  background-color: #ff5555;  /* Red hover background */
+  color: #000000;  /* Black hover text */
 }
 
-/* Table of contents - red theme */
+/* Table of contents - green text, red accents */
 .toc {
-  background-color: #111111;
-  border: 1px solid #ff5555;
-  color: #ff5555;
+  background-color: #001100;
+  border: 1px solid #ff5555;  /* Red border */
+  color: #00ff00;  /* Green text */
 }
 
 .toc a {
-  color: #ff5555;
+  color: #00ff00 !important;  /* Green TOC links */
 }
 
 .toc a:hover {
-  color: #ffffff;
+  color: #ff5555 !important;  /* Red hover */
 }
 
-/* Post list - red theme */
+/* Post list - green text, red titles */
 .post-title a {
-  color: #ff5555;
+  color: #ff5555;  /* Red post titles */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .post-title a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 5px #ff5555;
+  color: #00ff00;  /* Green hover */
+  text-shadow: 0 0 5px #00ff00;
 }
 
-/* Archive page - red theme */
+/* Archive page - green theme */
 .archive-entry {
   border-bottom: 1px solid #333333;
+  color: #00ff00 !important;  /* Green archive text */
 }
 
 .archive-entry:hover {
-  background-color: #111111;
+  background-color: #001100;
 }
 
-/* Tags and categories - red theme */
+/* Tags and categories - red background, black text */
 .tag,
 .category {
-  background-color: #ff5555;
-  color: #000000;
+  background-color: #ff5555;  /* Red background */
+  color: #000000;  /* Black text */
   padding: 2px 8px;
   border-radius: 2px;
   text-transform: uppercase;
@@ -227,11 +245,11 @@ blockquote {
 
 .tag:hover,
 .category:hover {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #00ff00;  /* Green hover background */
+  color: #000000;  /* Black text */
 }
 
-/* Terminal scanlines effect (subtle) */
+/* Terminal scanlines effect - green tint */
 .container::before {
   content: "";
   position: fixed;
@@ -239,18 +257,18 @@ blockquote {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(transparent 50%, rgba(255, 85, 85, 0.02) 50%);
+  background: linear-gradient(transparent 50%, rgba(0, 255, 0, 0.03) 50%);  /* Green scanlines */
   background-size: 100% 4px;
   pointer-events: none;
   z-index: 1000;
 }
 
-/* Terminal cursor blink effect for headers */
+/* Terminal cursor blink effect for headers - RED */
 h1::after,
 h2::after {
   content: "_";
   animation: blink 1s infinite;
-  color: #ff5555;
+  color: #ff5555 !important;  /* Red cursor */
 }
 
 @keyframes blink {
@@ -258,25 +276,25 @@ h2::after {
   51%, 100% { opacity: 0; }
 }
 
-/* Special terminal prompt styling */
+/* Special terminal prompt styling - GREEN */
 .terminal-prompt {
-  color: #ff5555;
+  color: #00ff00 !important;  /* Green terminal prompt */
   font-family: "Fira Code", monospace;
 }
 
 .terminal-prompt::before {
   content: "> ";
-  color: #ff5555;
+  color: #ff5555;  /* Red prompt symbol */
   font-weight: bold;
 }
 
-/* Lists - red theme */
+/* Lists - green text, red markers */
 ul li::marker,
 ol li::marker {
-  color: #ff5555;
+  color: #ff5555;  /* Red list markers */
 }
 
-/* Selection highlight - red theme */
+/* Selection highlight - red background */
 ::selection {
   background-color: #ff5555;
   color: #000000;
@@ -297,5 +315,10 @@ ol li::marker {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
+  background: #00ff00;
+}
+
+/* Content text override to ensure green */
+.content, .content p, .content div, .content span {
+  color: #00ff00 !important;
 }
