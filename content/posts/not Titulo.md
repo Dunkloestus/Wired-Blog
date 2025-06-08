@@ -63,3 +63,6 @@ safasf
 
 
 {{< image src="/img/7.png" alt="Hello Friend" position="center" style="border-radius: 8px;">}}
+
+
+{{< image src="/images/7.png" alt="Hello Friend" position="center" style="border-radius: 8px;">}}
