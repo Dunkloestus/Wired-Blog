@@ -36,13 +36,13 @@ markdown test
 ñyfljhlñsdkfghklsfdglsdflghndfkglhdflgdfihsl
 
 
-![[(/images/Pasted image 20250608140926.png|(/images/Pasted image 20250608140926.png]]
+![Pasted image 20250608140926.png]((/images/Pasted%20image%2020250608140926.png)
 
 
 safasf
 
 
-![[Pasted image 20250608174726.png|Pasted image 20250608174726.png]]
+![Pasted image 20250608174726.png](Pasted%20image%2020250608174726.png)
 
 
 
@@ -50,3 +50,12 @@ safasf
 
 
 ![](/images/Pasted%20image%2020250608175202.png)
+
+
+![Description](/images/Pasted image 20250608175202.png)
+
+
+{{< image src="/images/Pasted image 20250608175202.png" alt="Description" position="center" style="border-radius: 8px;" >}}
+
+
+
