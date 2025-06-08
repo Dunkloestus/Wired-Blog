@@ -34,3 +34,6 @@ markdown test
 `printf "hello world" `
 
 ñyfljhlñsdkfghklsfdglsdflghndfkglhdflgdfihsl
+
+
+![[Pasted image 20250608140926.png|Pasted image 20250608140926.png]]
