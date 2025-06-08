@@ -1,107 +1,243 @@
-/* Serial Experiments Lain - Pure Console Black Theme */
+# Red Terminal Theme with Black Background
+
+## Update Your Custom CSS
+
+Replace your `assets/css/custom.css` with this red theme version:
+
+```css
+/* Red Terminal Theme with Pure Black Background */
 :root {
-  --accent: #ff0040;
+  --accent: #ff5555;
   --background: #000000;
-  --color: #00ff00;
-  --border-color: #ff0040;
+  --color: #ff5555;
+  --border-color: #ff5555;
   --background-color: #000000;
 }
 
 /* Dark theme override */
 [data-theme="dark"] {
-  --accent: #ff0040;
+  --accent: #ff5555;
   --background: #000000;
-  --color: #00ff00;
-  --border-color: #ff0040;
+  --color: #ff5555;
+  --border-color: #ff5555;
+  --background-color: #000000;
 }
 
 /* Pure black background */
 body {
   background-color: #000000 !important;
-  color: #00ff00;
+  color: #ff5555;
   font-family: "Fira Code", "Courier New", monospace;
 }
 
-/* Remove any green tints */
+/* Remove any color tints */
 .container,
 .main,
 .content {
   background-color: #000000 !important;
 }
 
-/* Header styling */
+/* Header styling with red theme */
 .header {
   background-color: #000000 !important;
-  border-bottom: 2px solid #ff0040;
+  border-bottom: 2px solid #ff5555;
 }
 
-/* Terminal-like text effect */
+/* Logo styling - red background like in the theme preview */
+.logo {
+  background-color: #ff5555 !important;
+  color: #000000 !important;
+  padding: 8px 16px;
+  border-radius: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.logo a {
+  color: #000000 !important;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: #000000 !important;
+}
+
+/* Navigation menu - red theme */
+.menu {
+  color: #ff5555;
+}
+
+.menu a {
+  color: #ff5555;
+  border-bottom: 2px solid transparent;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.menu a:hover {
+  border-bottom-color: #ff5555;
+  color: #ffffff;
+}
+
+/* Main content text - red theme */
 .content {
-  text-shadow: 0 0 2px #00ff00;
+  color: #ff5555;
+  text-shadow: 0 0 2px #ff5555;
   animation: textFlicker 3s infinite;
 }
 
+/* Terminal-like text flicker effect */
 @keyframes textFlicker {
   0%, 98% { opacity: 1; }
   99% { opacity: 0.98; }
   100% { opacity: 1; }
 }
 
-/* Links */
+/* Links - red theme with hover effects */
 a {
-  color: #ff0040;
+  color: #ff5555;
   transition: all 0.3s ease;
 }
 
 a:hover {
-  color: #00ff00;
-  text-shadow: 0 0 5px #00ff00;
+  color: #ffffff;
+  text-shadow: 0 0 5px #ff5555;
 }
 
-/* Code blocks */
+/* Headings - red theme */
+h1, h2, h3, h4, h5, h6 {
+  color: #ff5555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #ff5555;
+  padding-bottom: 8px;
+}
+
+/* Code blocks - red theme */
 pre {
-  background-color: #001100;
-  border: 1px solid #ff0040;
+  background-color: #111111;
+  border: 1px solid #ff5555;
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(255, 0, 64, 0.3);
+  box-shadow: 0 0 10px rgba(255, 85, 85, 0.3);
+  color: #ff5555;
 }
 
 code {
-  background-color: #001100;
-  color: #00ff00;
+  background-color: #111111;
+  color: #ff5555;
   padding: 2px 4px;
+  border-radius: 2px;
+  border: 1px solid #ff5555;
+}
+
+/* Inline code */
+p code, li code {
+  background-color: #111111;
+  color: #ff5555;
+  padding: 2px 6px;
+  border: 1px solid #ff5555;
   border-radius: 2px;
 }
 
-/* Navigation menu */
-.menu {
-  color: #ff0040;
+/* Blockquotes - red theme */
+blockquote {
+  border-left: 4px solid #ff5555;
+  padding-left: 20px;
+  color: #ffffff;
+  background-color: #111111;
+  margin: 20px 0;
+  padding: 15px 20px;
 }
 
-.menu a {
-  color: #ff0040;
-  border-bottom: 2px solid transparent;
+/* Post metadata - red theme */
+.post-date,
+.post-author,
+.reading-time {
+  color: #ff5555;
 }
 
-.menu a:hover {
-  border-bottom-color: #00ff00;
-  color: #00ff00;
+/* Footer - red theme */
+.footer {
+  background-color: #000000 !important;
+  border-top: 1px solid #ff5555;
+  color: #ff5555;
 }
 
-/* Post titles */
-h1, h2, h3, h4, h5, h6 {
-  color: #ff0040;
+/* Pagination - red theme */
+.pagination {
+  color: #ff5555;
+}
+
+.pagination a {
+  color: #ff5555;
+  border: 1px solid #ff5555;
+  padding: 8px 16px;
+  margin: 0 4px;
+  background-color: #000000;
+}
+
+.pagination a:hover {
+  background-color: #ff5555;
+  color: #000000;
+}
+
+/* Table of contents - red theme */
+.toc {
+  background-color: #111111;
+  border: 1px solid #ff5555;
+  color: #ff5555;
+}
+
+.toc a {
+  color: #ff5555;
+}
+
+.toc a:hover {
+  color: #ffffff;
+}
+
+/* Post list - red theme */
+.post-title a {
+  color: #ff5555;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* Footer */
-.footer {
-  background-color: #000000 !important;
-  border-top: 1px solid #ff0040;
+.post-title a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 5px #ff5555;
 }
 
-/* Retro scanlines effect */
+/* Archive page - red theme */
+.archive-entry {
+  border-bottom: 1px solid #333333;
+}
+
+.archive-entry:hover {
+  background-color: #111111;
+}
+
+/* Tags and categories - red theme */
+.tag,
+.category {
+  background-color: #ff5555;
+  color: #000000;
+  padding: 2px 8px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin: 2px;
+}
+
+.tag:hover,
+.category:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Terminal scanlines effect (subtle) */
 .container::before {
   content: "";
   position: fixed;
@@ -109,8 +245,96 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(transparent 50%, rgba(0, 255, 0, 0.03) 50%);
+  background: linear-gradient(transparent 50%, rgba(255, 85, 85, 0.02) 50%);
   background-size: 100% 4px;
   pointer-events: none;
   z-index: 1000;
 }
+
+/* Terminal cursor blink effect for headers */
+h1::after,
+h2::after {
+  content: "_";
+  animation: blink 1s infinite;
+  color: #ff5555;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Special terminal prompt styling */
+.terminal-prompt {
+  color: #ff5555;
+  font-family: "Fira Code", monospace;
+}
+
+.terminal-prompt::before {
+  content: "> ";
+  color: #ff5555;
+  font-weight: bold;
+}
+
+/* Lists - red theme */
+ul li::marker,
+ol li::marker {
+  color: #ff5555;
+}
+
+/* Selection highlight - red theme */
+::selection {
+  background-color: #ff5555;
+  color: #000000;
+}
+
+/* Scrollbar - red theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff5555;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+```
+
+## How to Apply This
+
+### Method 1: Update via GitHub (Easiest)
+
+1. **Go to your repository**
+2. **Navigate to**: `assets/css/custom.css`
+3. **Click Edit** (pencil icon)
+4. **Replace all content** with the CSS above
+5. **Commit changes**
+
+### Method 2: Create New File (If it doesn't exist)
+
+1. **Go to your repository**
+2. **Click**: Add file → Create new file
+3. **Name**: `assets/css/custom.css`
+4. **Paste** the CSS content above
+5. **Commit**
+
+## What This Gives You
+
+✅ **Red Terminal Theme**: Just like the red variant in your image
+✅ **Pure Black Background**: Maintains your current console black
+✅ **Red Logo Background**: Matches the Terminal theme logo style
+✅ **Red Accents**: Headers, links, borders all in red
+✅ **Terminal Effects**: Cursor blink, scanlines, flicker
+✅ **Consistent Styling**: Navigation, code blocks, everything themed
+
+## Expected Result
+
+After applying this CSS:
+- **Logo**: Red background with black text (like Terminal theme)
