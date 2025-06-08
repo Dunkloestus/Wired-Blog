@@ -63,7 +63,7 @@ pagerSize = 5
       words = "words"
 
       [languages.en.params.logo]
-        logoText = "PROTOCOL-7"
+        logoText = "Wired-Blog"
         logoHomeLink = "/"
 
       [languages.en.menu]
