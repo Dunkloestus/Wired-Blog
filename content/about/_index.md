@@ -1,6 +1,6 @@
 ---
 title: "Identity Protocol"
-menu: "main"
+menu: "logs"
 ---
 
 # Who am I?
