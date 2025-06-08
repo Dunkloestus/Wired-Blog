@@ -59,7 +59,7 @@ safasf
 
 
 
-![lain](/images/7.png)
+![lain](7.png)
 
 
 {{< image src="/img/7.png" alt="Hello Friend" position="center" style="border-radius: 8px;">}}
@@ -79,3 +79,30 @@ safasf
 
 
 {{< image src="/img/7.png" alt="Hello Friend" position="center" style="border-radius: 8px;">}}
+
+---------------
+
+
+
+{{< image src="/images/7.png" alt="Description" position="center" >}} 
+![Description](/images/7.png)
+
+
+
+
+
+
+{{< image src="/images/Pasted%20image%2020250608175202.png" alt="Description" position="center" style="border-radius: 8px;" >}}
+
+![Description](/images/Pasted%20image%2020250608175202.png)
+
+
+
+
+
+
+{{< image src="/img/7.png" alt="Description" position="center" >}} 
+
+
+
+![Description](/img/7.png)
