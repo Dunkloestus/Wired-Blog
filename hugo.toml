@@ -1,7 +1,7 @@
-baseURL = "https://Dunkloestus.github.io/Wired-Blog"
+baseURL = "https://dunkloestus.github.io/Wired-Blog"
 languageCode = "en-us"
 title = "Present Day, Present Time"
-theme = "terminal"
+# REMOVED: theme = "terminal" ← This line causes the error when using Hugo Modules
 
 # Enable pagination
 [pagination]
@@ -80,7 +80,7 @@ pagerSize = 5
           name = "Archive"
           url = "/archive"
 
-# Module configuration (if using Hugo modules)
+# Hugo Module configuration (this replaces the theme declaration)
 [module]
   [[module.imports]]
     path = 'github.com/panr/hugo-theme-terminal/v4'
