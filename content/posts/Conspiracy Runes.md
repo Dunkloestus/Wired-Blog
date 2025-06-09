@@ -4,7 +4,8 @@ date: 2025-01-08T15:00:00
 draft: false
 share: true
 tags:
-  - cyberpunk
+  - input
+  - Entry
 categories:
   - reviews
   - thoughts
@@ -15,7 +16,8 @@ readingTime: true
 ---
 
 
-
+**Foto de  un Tepuy (Idk cual es):**
+![Main Content Image](/img/auyantepuy.jpg)
 
 ##  Señal Wow! 
 
@@ -24,8 +26,7 @@ readingTime: true
 en los Tepuyes hay luces y gigantes? ...
 Arboles petrificados?
 
-**Foto de  un Tepuy (Idk cual es):**
-![Main Content Image](/img/auyantepuy.jpg)
+
 
 
 
@@ -64,9 +65,9 @@ Volviendo al Cobre
 
 ### What I Learned
 
-- Key takeaway 1
-- Key takeaway 2
-- Key takeaway 3
+- Que todos siempre tienen algo que decir.
+- No siempre es cierto
+- Me siento mejor despues de compartir con otros.
 
 ### Pros and Cons
 
