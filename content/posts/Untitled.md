@@ -15,3 +15,15 @@ share: true
 
 **Hugo shortcode for comparison:**
 {{< image src="/img/7.png" alt="Shortcode Test" >}}
+
+
+
+**Hugo built-in figure shortcode:** 
+
+{{< figure src="/img/7.png" alt="Test Image" >}} 
+
+
+**Terminal theme shortcode:** 
+
+
+{{< image src="/img/7.png" alt="Shortcode Test" >}}
