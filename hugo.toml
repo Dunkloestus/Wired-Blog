@@ -1,6 +1,8 @@
 baseURL = "https://dunkloestus.github.io/Wired-Blog/"
 languageCode = "en-us"
 title = "Present Day, Present Time"
+canonifyURLs = true  # ← Add this to fix relative URLs
+relativeURLs = false # ← Add this to ensure absolute URLs
 
 # Ensure static files are processed
 staticDir = ["static"]
