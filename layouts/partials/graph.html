@@ -1,0 +1,74 @@
+{{ define "main" }}
+<div class="content">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  
+  <div id="network-container">
+    <div id="network-graph"></div>
+    <div id="graph-info">
+      <h3>Node Information</h3>
+      <div id="node-details">
+        <p>Click on a node to see details</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Post data for JavaScript -->
+  <script id="posts-data" type="application/json">
+    {
+      "nodes": [
+        {{ range $index, $page := .Site.RegularPages }}
+        {{ if $index }},{{ end }}
+        {
+          "id": "{{ .RelPermalink }}",
+          "title": {{ .Title | jsonify }},
+          "date": "{{ .Date.Format "2006-01-02" }}",
+          "url": "{{ .RelPermalink }}",
+          "categories": {{ .Params.categories | jsonify }},
+          "tags": {{ .Params.tags | jsonify }},
+          "wordCount": {{ .WordCount }},
+          "readingTime": {{ .ReadingTime }},
+          "section": "{{ .Section }}",
+          "type": "post"
+        }
+        {{ end }}
+        {{ range .Site.Taxonomies.categories }}
+        ,{
+          "id": "category-{{ .Page.Title }}",
+          "title": "{{ .Page.Title }}",
+          "type": "category",
+          "count": {{ .Count }}
+        }
+        {{ end }}
+        {{ range .Site.Taxonomies.tags }}
+        ,{
+          "id": "tag-{{ .Page.Title }}",
+          "title": "{{ .Page.Title }}",
+          "type": "tag",
+          "count": {{ .Count }}
+        }
+        {{ end }}
+      ],
+      "links": [
+        {{ $links := slice }}
+        {{ range $page := .Site.RegularPages }}
+          {{ range .Params.categories }}
+            {{ $links = $links | append (dict "source" $page.RelPermalink "target" (printf "category-%s" .) "type" "category") }}
+          {{ end }}
+          {{ range .Params.tags }}
+            {{ $links = $links | append (dict "source" $page.RelPermalink "target" (printf "tag-%s" .) "type" "tag") }}
+          {{ end }}
+        {{ end }}
+        {{ range $index, $link := $links }}
+        {{ if $index }},{{ end }}
+        {
+          "source": "{{ $link.source }}",
+          "target": "{{ $link.target }}",
+          "type": "{{ $link.type }}"
+        }
+        {{ end }}
+      ]
+    }
+  </script>
+</div>
+{{ end }}
