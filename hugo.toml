@@ -1,6 +1,6 @@
 baseURL = "https://dunkloestus.github.io/Wired-Blog/"
 languageCode = "en-us"
-title = "Present Day, Present Time"
+title = "Wired Blog"
 canonifyURLs = true
 relativeURLs = false
 staticDir = ["static"]
@@ -35,13 +35,13 @@ pagerSize = 5
 [languages]
   [languages.en]
     languageName = "English"
-    title = "Present Day, Present Time"
+    title = "Wired Blog"
     
     [languages.en.params]
       subtitle = "And you don't seem to understand..."
       owner = "Dunkloestus"
       keywords = "blog, cyberpunk, technology, thoughts, lain"
-      copyright = "© Present Day, Present Time"
+      copyright = "© Present Day, Present Time, made by Dunkloestus"
       menuMore = "Show more"
       readMore = "Continue reading"
       readOtherPosts = "Other transmissions"
