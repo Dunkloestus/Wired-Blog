@@ -72,7 +72,7 @@ pagerSize = 5
 
       [languages.en.params.logo]
         logoText = "Wired-Blog"
-        logoHomeLink = "/Wired-Blog/"  # ← Fixed: Added /Wired-Blog/ subdirectory
+        logoHomeLink = "dunkloestus.github.io/Wired-Blog/"  # ← Fixed: Added /Wired-Blog/ subdirectory
 
       [languages.en.menu]
       ##  [[languages.en.menu.main]]
