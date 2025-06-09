@@ -69,16 +69,7 @@ Volviendo al Cobre
 - No siempre es cierto
 - Me siento mejor despues de compartir con otros.
 
-### Pros and Cons
 
-**👍 What I Liked:**
-- Positive point 1
-- Positive point 2
-- Positive point 3
-
-**👎 What Could Be Better:**
-- Criticism or improvement suggestion 1
-- Criticism or improvement suggestion 2
 
 ---
 
