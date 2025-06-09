@@ -5,6 +5,9 @@ type: "graph"
 layout: "graph"
 ---
 
+<link rel="stylesheet" href="/css/graph.css">
+
+
 # Network Map of The Wired
 
 Explore the connections between all posts, thoughts, and transmissions.
