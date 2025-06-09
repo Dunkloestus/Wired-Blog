@@ -1,6 +1,14 @@
 // Fixed Network Graph JavaScript
 console.log("Network graph script loaded - v2");
 
+// Helper function to ensure array format
+function ensureArray(value) {
+  if (!value) return [];
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'string') return [value];
+  return [];
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   console.log("DOM loaded, initializing network graph");
   
@@ -84,14 +92,17 @@ function createNetworkGraph(data) {
     .style("background", "#000000");
   
   // Add categories and tags as nodes
-  const categoryNodes = [...new Set(data.nodes.flatMap(n => n.categories || []))]
+  const allCategories = data.nodes.flatMap(n => ensureArray(n.categories));
+  const allTags = data.nodes.flatMap(n => ensureArray(n.tags));
+  
+  const categoryNodes = [...new Set(allCategories)]
     .map(cat => ({
       id: `category-${cat}`,
       title: cat,
       type: "category"
     }));
   
-  const tagNodes = [...new Set(data.nodes.flatMap(n => n.tags || []))]
+  const tagNodes = [...new Set(allTags)]
     .map(tag => ({
       id: `tag-${tag}`,
       title: tag, 
@@ -104,24 +115,24 @@ function createNetworkGraph(data) {
   // Create links between posts and their categories/tags
   const allLinks = [];
   data.nodes.forEach(post => {
-    if (post.categories) {
-      post.categories.forEach(cat => {
-        allLinks.push({
-          source: post.id,
-          target: `category-${cat}`,
-          type: "category"
-        });
+    const categories = ensureArray(post.categories);
+    const tags = ensureArray(post.tags);
+    
+    categories.forEach(cat => {
+      allLinks.push({
+        source: post.id,
+        target: `category-${cat}`,
+        type: "category"
       });
-    }
-    if (post.tags) {
-      post.tags.forEach(tag => {
-        allLinks.push({
-          source: post.id,
-          target: `tag-${tag}`,
-          type: "tag"
-        });
+    });
+    
+    tags.forEach(tag => {
+      allLinks.push({
+        source: post.id,
+        target: `tag-${tag}`,
+        type: "tag"
       });
-    }
+    });
   });
   
   console.log("Total nodes:", allNodes.length);
@@ -263,13 +274,16 @@ function showNodeInfo(d) {
   let content = `<h4 style="color: #ffff55; margin: 0 0 10px 0;">${d.title}</h4>`;
   
   if (d.type === 'post') {
+    const categories = ensureArray(d.categories);
+    const tags = ensureArray(d.tags);
+    
     content += `
       <p><strong style="color: #ff5555;">Date:</strong> ${d.date}</p>
       <p><strong style="color: #ff5555;">Reading Time:</strong> ${d.readingTime} min</p>
       <p><strong style="color: #ff5555;">Word Count:</strong> ${d.wordCount}</p>
       <p><strong style="color: #ff5555;">Section:</strong> ${d.section}</p>
-      ${d.categories && d.categories.length > 0 ? `<p><strong style="color: #ff5555;">Categories:</strong> ${d.categories.join(', ')}</p>` : ''}
-      ${d.tags && d.tags.length > 0 ? `<p><strong style="color: #ff5555;">Tags:</strong> ${d.tags.join(', ')}</p>` : ''}
+      ${categories.length > 0 ? `<p><strong style="color: #ff5555;">Categories:</strong> ${categories.join(', ')}</p>` : ''}
+      ${tags.length > 0 ? `<p><strong style="color: #ff5555;">Tags:</strong> ${tags.join(', ')}</p>` : ''}
       <a href="${d.url}" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #ff5555; color: #000000; text-decoration: none; border-radius: 4px; font-weight: bold;">Visit Post →</a>
     `;
   } else if (d.type === 'category' || d.type === 'tag') {
