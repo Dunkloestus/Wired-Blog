@@ -2,6 +2,9 @@ baseURL = "https://dunkloestus.github.io/Wired-Blog/"
 languageCode = "en-us"
 title = "Present Day, Present Time"
 
+# Ensure static files are processed
+staticDir = ["static"]
+
 # Enable pagination
 [pagination]
 pagerSize = 5
