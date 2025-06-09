@@ -12,7 +12,11 @@ share: true
 ## Recent Transmissions
 
 This is where your thoughts become data, where consciousness meets the network. 
+
+
 Aqui vengo a Escribir lo que pienso, lo que quiero compartir con el gran mar de datos que es internet.
+
+
 Close your eyes and open your mind to the infinite possibilities of the connected world.
 
 
