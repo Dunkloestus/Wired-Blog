@@ -11,9 +11,13 @@ pagerSize = 5
 
 # Required for Chroma syntax highlighting
 [markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # ← Add this to allow HTML in markdown
   [markup.highlight]
     noClasses = false
     style = "monokai"
+
 
 [params]
   # Content directory
