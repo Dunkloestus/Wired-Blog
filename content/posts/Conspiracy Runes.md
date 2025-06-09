@@ -1,18 +1,19 @@
 ---
 title: Conspiracy Runes
-date: 2025-06-08T12:00:00+01:00
+date: 2025-01-08T15:00:00
 draft: false
 share: true
 tags:
-  - input
+  - cyberpunk
 categories:
-  - blog
+  - reviews
+  - thoughts
 author: Dunkloestus
 description: Pensamientos aleatorios . . .
 toc: true
 readingTime: true
 ---
----
+
 
 
 
