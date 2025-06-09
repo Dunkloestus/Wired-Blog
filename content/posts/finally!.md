@@ -14,10 +14,13 @@ description: So i want to start this keeping of records outside of my pc
 toc: true
 readingTime: true
 ---
-![](/img/803117880_16205.jpg)
+
 ---
 
 # 1
+
+
+![](/img/803117880_16205.jpg)
 
 Espero el sistema de módulos que monte para visualizar lo que escribo funcione, siento que puede ayudarme a alimentar esto mucho mas y ver en que se convierte si un baúl de recuerdos polvoriento, o si sirve de cofre lleno de arena con *1* tesoro dentro.
 
@@ -37,7 +40,7 @@ Quiero hacer mención especial de una persona muy especial que siempre esta ahi 
 
 Me dio una imagen, aqui esta:
 
-![](img/fumo.jpg)
+![](/img/fumo.jpg)
 
 
  :'3 Siempre me da paz ver estos fumo peluches y me divierte tanto ver lo que la gente hace con ellos.
