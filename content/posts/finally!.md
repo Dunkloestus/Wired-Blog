@@ -40,7 +40,7 @@ Quiero hacer mención especial de una persona muy especial que siempre esta ahi 
 
 Me dio una imagen, aqui esta:
 
-![](img/fumo.jpg)
+![](/img/fumo.jpg)
 
 
  :'3 Siempre me da paz ver estos fumo peluches y me divierte tanto ver lo que la gente hace con ellos.
