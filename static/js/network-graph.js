@@ -1,5 +1,5 @@
-// Fixed Network Graph JavaScript
-console.log("Network graph script loaded - v2");
+// Enhanced Network Graph with Zoom Controls
+console.log("Enhanced network graph script loaded - v3");
 
 // Helper function to ensure array format
 function ensureArray(value) {
@@ -10,7 +10,7 @@ function ensureArray(value) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("DOM loaded, initializing network graph");
+  console.log("DOM loaded, initializing enhanced network graph");
   
   // Check if D3 is available
   if (typeof d3 === 'undefined') {
@@ -62,12 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
   
-  // Create the network graph
-  createNetworkGraph(data);
+  // Create the enhanced network graph
+  createEnhancedNetworkGraph(data);
 });
 
-function createNetworkGraph(data) {
-  console.log("Creating network graph with", data.nodes.length, "nodes");
+function createEnhancedNetworkGraph(data) {
+  console.log("Creating enhanced network graph with", data.nodes.length, "nodes");
   
   const container = document.getElementById('network-graph');
   if (!container) {
@@ -75,8 +75,50 @@ function createNetworkGraph(data) {
     return;
   }
   
-  // Clear loading message
+  // Clear container completely
   container.innerHTML = '';
+  
+  // Create control panel
+  const controls = document.createElement('div');
+  controls.style.cssText = `
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  `;
+  
+  // Zoom controls
+  const zoomIn = createButton('+', 'Zoom In');
+  const zoomOut = createButton('−', 'Zoom Out');
+  const resetView = createButton('⌂', 'Reset View');
+  const fullscreen = createButton('⛶', 'Fullscreen');
+  
+  controls.appendChild(zoomIn);
+  controls.appendChild(zoomOut);
+  controls.appendChild(resetView);
+  controls.appendChild(fullscreen);
+  container.appendChild(controls);
+  
+  // Create zoom level indicator
+  const zoomIndicator = document.createElement('div');
+  zoomIndicator.style.cssText = `
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    color: #00ff00;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 5px 10px;
+    border: 1px solid #00ff00;
+    border-radius: 4px;
+  `;
+  zoomIndicator.textContent = 'ZOOM: 100%';
+  container.appendChild(zoomIndicator);
   
   // Set dimensions
   const width = container.clientWidth || 800;
@@ -84,12 +126,23 @@ function createNetworkGraph(data) {
   
   console.log("Graph dimensions:", width, "x", height);
   
-  // Create SVG
+  // Create SVG with zoom behavior
   const svg = d3.select("#network-graph")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
-    .style("background", "#000000");
+    .style("background", "#000000")
+    .style("cursor", "grab");
+  
+  // Create zoom behavior
+  const zoom = d3.zoom()
+    .scaleExtent([0.1, 10])
+    .on("zoom", handleZoom);
+  
+  svg.call(zoom);
+  
+  // Create main group for all graph elements
+  const g = svg.append("g");
   
   // Add categories and tags as nodes
   const allCategories = data.nodes.flatMap(n => ensureArray(n.categories));
@@ -141,12 +194,12 @@ function createNetworkGraph(data) {
   // Create force simulation
   const simulation = d3.forceSimulation(allNodes)
     .force("link", d3.forceLink(allLinks).id(d => d.id).distance(100))
-    .force("charge", d3.forceManyBody().strength(-300))
+    .force("charge", d3.forceManyBody().strength(-400))
     .force("center", d3.forceCenter(width / 2, height / 2))
-    .force("collision", d3.forceCollide().radius(30));
+    .force("collision", d3.forceCollide().radius(35));
   
   // Create links
-  const link = svg.append("g")
+  const link = g.append("g")
     .selectAll("line")
     .data(allLinks)
     .enter().append("line")
@@ -158,10 +211,30 @@ function createNetworkGraph(data) {
       }
     })
     .attr("stroke-opacity", 0.6)
-    .attr("stroke-width", 2);
+    .attr("stroke-width", 2)
+    .style("filter", "drop-shadow(0 0 4px currentColor)");
+  
+  // Create glow definitions
+  const defs = svg.append("defs");
+  
+  // Glow filter for nodes
+  const glowFilter = defs.append("filter")
+    .attr("id", "glow")
+    .attr("x", "-50%")
+    .attr("y", "-50%")
+    .attr("width", "200%")
+    .attr("height", "200%");
+  
+  glowFilter.append("feGaussianBlur")
+    .attr("stdDeviation", "3")
+    .attr("result", "coloredBlur");
+  
+  const feMerge = glowFilter.append("feMerge");
+  feMerge.append("feMergeNode").attr("in", "coloredBlur");
+  feMerge.append("feMergeNode").attr("in", "SourceGraphic");
   
   // Create nodes
-  const node = svg.append("g")
+  const node = g.append("g")
     .selectAll("circle")
     .data(allNodes)
     .enter().append("circle")
@@ -183,7 +256,7 @@ function createNetworkGraph(data) {
     })
     .attr("stroke", "#000000")
     .attr("stroke-width", 2)
-    .style("filter", "drop-shadow(0 0 6px currentColor)")
+    .style("filter", "url(#glow)")
     .style("cursor", "pointer")
     .call(d3.drag()
       .on("start", dragstarted)
@@ -202,18 +275,26 @@ function createNetworkGraph(data) {
         .transition()
         .duration(200)
         .attr("r", d.type === 'post' ? 16 : d.type === 'category' ? 20 : 12)
-        .style("filter", "drop-shadow(0 0 12px currentColor)");
+        .style("filter", "url(#glow) brightness(1.5)");
+      
+      // Highlight connected links
+      link.style("stroke-opacity", l => 
+        (l.source === d || l.target === d) ? 1 : 0.2
+      );
     })
     .on("mouseout", function(event, d) {
       d3.select(this)
         .transition()
         .duration(200)
         .attr("r", d.type === 'post' ? 12 : d.type === 'category' ? 16 : 8)
-        .style("filter", "drop-shadow(0 0 6px currentColor)");
+        .style("filter", "url(#glow)");
+      
+      // Reset link opacity
+      link.style("stroke-opacity", 0.6);
     });
   
   // Add labels
-  const label = svg.append("g")
+  const label = g.append("g")
     .selectAll("text")
     .data(allNodes)
     .enter().append("text")
@@ -227,9 +308,51 @@ function createNetworkGraph(data) {
     .attr("text-anchor", "middle")
     .attr("dy", ".35em")
     .style("pointer-events", "none")
-    .style("text-shadow", "0 0 3px #00ff00");
+    .style("text-shadow", "0 0 3px #00ff00")
+    .style("user-select", "none");
   
-  // Update positions on tick
+  // Zoom event handler
+  function handleZoom(event) {
+    const { transform } = event;
+    g.attr("transform", transform);
+    
+    // Update zoom indicator
+    const zoomPercent = Math.round(transform.k * 100);
+    zoomIndicator.textContent = `ZOOM: ${zoomPercent}%`;
+    
+    // Adjust visual elements based on zoom level
+    const nodeScale = Math.max(0.5, Math.min(2, 1 / transform.k));
+    label.style("font-size", `${10 * nodeScale}px`);
+    link.attr("stroke-width", Math.max(1, 2 * nodeScale));
+  }
+  
+  // Button functions
+  zoomIn.onclick = () => {
+    svg.transition().duration(300).call(
+      zoom.scaleBy, 1.5
+    );
+  };
+  
+  zoomOut.onclick = () => {
+    svg.transition().duration(300).call(
+      zoom.scaleBy, 1 / 1.5
+    );
+  };
+  
+  resetView.onclick = () => {
+    svg.transition().duration(500).call(
+      zoom.transform,
+      d3.zoomIdentity.translate(width / 2, height / 2).scale(1)
+    );
+  };
+  
+  fullscreen.onclick = () => {
+    if (container.requestFullscreen) {
+      container.requestFullscreen();
+    }
+  };
+  
+  // Update positions on simulation tick
   simulation.on("tick", () => {
     link
       .attr("x1", d => d.source.x)
@@ -251,6 +374,7 @@ function createNetworkGraph(data) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
+    svg.style("cursor", "grabbing");
   }
   
   function dragged(event, d) {
@@ -262,9 +386,48 @@ function createNetworkGraph(data) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
+    svg.style("cursor", "grab");
   }
   
-  console.log("Network graph created successfully!");
+  // Add mouse wheel zoom
+  svg.on("wheel", function(event) {
+    event.preventDefault();
+  });
+  
+  console.log("Enhanced network graph created successfully!");
+}
+
+function createButton(text, title) {
+  const button = document.createElement('button');
+  button.textContent = text;
+  button.title = title;
+  button.style.cssText = `
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #ff5555;
+    color: #00ff00;
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  `;
+  
+  button.onmouseover = () => {
+    button.style.background = 'rgba(255, 85, 85, 0.2)';
+    button.style.color = '#ffffff';
+    button.style.boxShadow = '0 0 10px rgba(255, 85, 85, 0.5)';
+  };
+  
+  button.onmouseout = () => {
+    button.style.background = 'rgba(0, 0, 0, 0.8)';
+    button.style.color = '#00ff00';
+    button.style.boxShadow = 'none';
+  };
+  
+  return button;
 }
 
 function showNodeInfo(d) {
@@ -289,7 +452,8 @@ function showNodeInfo(d) {
   } else if (d.type === 'category' || d.type === 'tag') {
     content += `
       <p><strong style="color: #ff5555;">Type:</strong> ${d.type}</p>
-      ${d.count ? `<p><strong style="color: #ff5555;">Post Count:</strong> ${d.count}</p>` : ''}
+      <p><strong style="color: #ff5555;">Connections:</strong> Multiple posts</p>
+      <p style="color: #00ff00; font-style: italic;">Hover over connected nodes to see relationships</p>
     `;
   }
   
