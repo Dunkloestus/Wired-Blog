@@ -30,7 +30,7 @@
           "id": "{{ .RelPermalink }}",
           "title": {{ .Title | jsonify }},
           "date": "{{ .Date.Format "2006-01-02" }}",
-          "url": "{{ .RelPermalink }}",
+          "url": "{{ .Permalink }}",
           "categories": {{ .Params.categories | default slice | jsonify }},
           "tags": {{ .Params.tags | default slice | jsonify }},
           "wordCount": {{ .WordCount }},
