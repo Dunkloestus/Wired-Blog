@@ -27,3 +27,10 @@ share: true
 
 
 {{< image src="/img/7.png" alt="Shortcode Test" >}}
+
+
+**Test with absolute URL:**
+<img src="https://dunkloestus.github.io/Wired-Blog/img/7.png" alt="Absolute URL Test">
+
+**Hugo shortcode with absolute URL:**
+{{< image src="https://dunkloestus.github.io/Wired-Blog/img/7.png" alt="Absolute Shortcode" >}}
