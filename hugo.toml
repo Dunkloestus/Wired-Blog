@@ -61,6 +61,11 @@ pagerSize = 5
           identifier = "posts"
           name = "Logs"
           url = "/posts"
+        [[languages.en.menu.main]]
+          identifier = "network"
+          name = "The Wired"
+          url = "/graph"
+          weight = 40
 
 [module]
   [[module.imports]]
