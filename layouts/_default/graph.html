@@ -1,0 +1,75 @@
+{{ define "main" }}
+<div class="content">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  
+  <!-- Debug: Check if this appears -->
+  <div style="color: yellow; margin: 20px 0;">
+    DEBUG: Graph container should appear below this line
+  </div>
+  
+  <div id="network-container">
+    <div id="network-graph" style="border: 2px solid red; min-height: 400px;">
+      <div style="color: yellow; padding: 20px;">Loading network graph...</div>
+    </div>
+    <div id="graph-info">
+      <h3>Node Information</h3>
+      <div id="node-details">
+        <p>Click on a node to see details</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Post data for JavaScript -->
+  <script id="posts-data" type="application/json">
+    {
+      "nodes": [
+        {{ range $index, $page := .Site.RegularPages }}
+        {{ if $index }},{{ end }}
+        {
+          "id": "{{ .RelPermalink }}",
+          "title": {{ .Title | jsonify }},
+          "date": "{{ .Date.Format "2006-01-02" }}",
+          "url": "{{ .RelPermalink }}",
+          "categories": {{ .Params.categories | default slice | jsonify }},
+          "tags": {{ .Params.tags | default slice | jsonify }},
+          "wordCount": {{ .WordCount }},
+          "readingTime": {{ .ReadingTime }},
+          "section": "{{ .Section }}",
+          "type": "post"
+        }
+        {{ end }}
+      ],
+      "links": [
+        {{ $links := slice }}
+        {{ range $page := .Site.RegularPages }}
+          {{ range .Params.categories }}
+            {{ $links = $links | append (dict "source" $page.RelPermalink "target" (printf "category-%s" .) "type" "category") }}
+          {{ end }}
+          {{ range .Params.tags }}
+            {{ $links = $links | append (dict "source" $page.RelPermalink "target" (printf "tag-%s" .) "type" "tag") }}
+          {{ end }}
+        {{ end }}
+        {{ range $index, $link := $links }}
+        {{ if $index }},{{ end }}
+        {
+          "source": "{{ $link.source }}",
+          "target": "{{ $link.target }}",
+          "type": "{{ $link.type }}"
+        }
+        {{ end }}
+      ]
+    }
+  </script>
+
+  <!-- Load D3.js and our script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script>
+    // Debug: Check if D3 loads
+    console.log("D3 version:", d3.version);
+    console.log("Posts data:", document.getElementById('posts-data').textContent);
+  </script>
+  <script src="/js/network-graph.js"></script>
+  
+</div>
+{{ end }}
