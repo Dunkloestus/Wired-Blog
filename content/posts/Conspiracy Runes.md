@@ -9,7 +9,6 @@ categories:
   - blog
 author: Dunkloestus
 description: Pensamientos aleatorios . . .
-cover: auyantepuy.jpg
 toc: true
 readingTime: true
 ---
@@ -24,25 +23,43 @@ readingTime: true
 en los Tepuyes hay luces y gigantes? ...
 Arboles petrificados?
 
-**Central Feature Image:**
+**Foto de  un Tepuy (Idk cual es):**
 ![Main Content Image](/img/auyantepuy.jpg)
 
-### Key Points
-
-**For Videos/Articles:**
-- **Source:** [Title](URL)
-- **Creator/Author:** Name
-- **Published:** Date
-- **Duration/Length:** X minutes/pages
 
 
 ---
 
-## 🔍 Deep Dive
+## 🔍 Conexión con algo:
 
-### My Analysis
+### Analysis de lo que dijo Daniel
 
-Your detailed thoughts, analysis, and insights go here...
+ Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas,  Paredes escritas, 
+
+
+>  Paredes escritas,  
+>  Daniel en discord.
+
+
+
+=="El man desapareció" . . .==
+
+*=="El man desapareció" . . .==*
+
+
+
+"Algo de física una vuelta así"
+
+Épico!
+
+
+Este reguero,  
+
+
+Volviendo al Cobre 
+
+"la edad de cobre"
+
 
 ### What I Learned
 
