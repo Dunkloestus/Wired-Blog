@@ -1,0 +1,9 @@
+{{ if not .Params.disable_comments }}
+<div id="comments-section" style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ff5555;">
+  <h3 style="color: #ff5555; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
+    COMMENTS // TRANSMISSIONS
+  </h3>
+  
+  {{ template "_internal/disqus.html" . }}
+</div>
+{{ end }}
