@@ -4,6 +4,7 @@ title = "Wired Blog"
 canonifyURLs = true
 relativeURLs = false
 staticDir = ["static"]
+disqusShortname = "wired-blog"
 
 [pagination]
 pagerSize = 5
@@ -27,6 +28,7 @@ pagerSize = 5
   readingTime = true
   Toc = true
   TocTitle = "Navigation"
+  enableComments = true
 
 [params.twitter]
   creator = ""
