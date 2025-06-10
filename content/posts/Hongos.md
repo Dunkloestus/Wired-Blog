@@ -3,11 +3,13 @@ title: Hongos titulo
 date: 2025-09-06T12:00:00+01:00
 draft: false
 share: true
-tags: 
+tags:
+  - code
+  - input
 categories:
   - blog
 author: Dunkloestus
-description: 
+description: test 2
 toc: true
 readingTime: true
 ---
