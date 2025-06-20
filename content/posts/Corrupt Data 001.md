@@ -24,7 +24,7 @@ no asi.
 
 ---
 
-![](img/Pasted%20image%2020250619234349.png)
+![](/img/Pasted%20image%2020250619234349.png)
 So i can say she want solo, you can say, cuz she can get way
 
 I wanna get rid of all,
@@ -48,7 +48,7 @@ IS NOT.
 
 TAKE MY HEART 
 
-![](img/Pasted%20image%2020250619234803.png)
+![](/img/Pasted%20image%2020250619234803.png)
 
 
 I'm so in pain
