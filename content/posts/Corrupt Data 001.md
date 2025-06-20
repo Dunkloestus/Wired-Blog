@@ -63,7 +63,7 @@ this is not real and never gonna be, Darling I'm more than this I'm so sorry.
 
 
 
-![](img/Pasted%20image%2020250619234914.png)
+![](/img/Pasted%20image%2020250619234914.png)
 
 
 Pero todo bien gracias a Dios, aqui fino.
