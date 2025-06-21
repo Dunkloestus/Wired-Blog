@@ -28,6 +28,13 @@ readingTime: true
 		5) install it and start trying pen testing and more! 💯🛰️🐦‍⬛🧱💀🐀🐭🐁🍷⚡🦈
 
 
+
+	https://github.com/vinta/awesome-python A lot of python stuff and functuinalities
+side quests:
+- [ ] Open a github account
+- [ ] Create first repository
+- [ ] Create first integration (bot?)
+
 ---
 
 *Connection established. Transmission complete.*
