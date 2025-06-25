@@ -10,7 +10,6 @@ categories:
   - blog
   - thoughts
 author: Dunkloestus
-cover: cover-image.png
 toc: true
 readingTime: true
 ---
