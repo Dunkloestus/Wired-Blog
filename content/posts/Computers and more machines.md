@@ -1,6 +1,6 @@
 ---
 title: Computers and more machines
-date: 2025-06-25T00:45:00+01:00
+date: 2025-06-25T00:45:00+04:00
 draft: false
 share: true
 tags:
@@ -71,3 +71,4 @@ I must go to sleep before I betray myself once more.
 *Connection established. Transmission complete.*
 
 > Present day, present time. Another entry logged into the wired...
+
