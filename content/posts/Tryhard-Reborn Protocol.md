@@ -1,6 +1,6 @@
 ---
 title: Tryhard-Reborn Protocool
-date: 2024-09-05T12:00:00+01:00
+date: 2025-07-07T12:00:00+01:00
 draft: false
 share: true
 tags:
