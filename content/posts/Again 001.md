@@ -1,5 +1,5 @@
 ---
-title: ejemplotitulo
+title: Again 001
 date: 2025-09-25T12:00:00+01:00
 draft: false
 share: true
@@ -10,7 +10,6 @@ categories:
   - blog
 author: Dunkloestus
 description: I went overdrive, no flares left. meltdown incoming. . .
-cover: cover-image.png
 toc: true
 readingTime: true
 ---
