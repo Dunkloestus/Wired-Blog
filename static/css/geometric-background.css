@@ -1,0 +1,74 @@
+/* ============================================
+   GEOMETRIC BACKGROUND STYLES
+   Canvas positioning and animations
+   ============================================ */
+
+/* Canvas layers - positioned behind all content */
+#wireframe-canvas,
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#wireframe-canvas {
+    opacity: 0.3;
+}
+
+#matrix-canvas {
+    opacity: 0.15;
+}
+
+/* Scanlines effect overlay */
+.scan-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    animation: scanlines 8s linear infinite;
+}
+
+@keyframes scanlines {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(10px); }
+}
+
+/* Glitch overlay effect */
+.glitch-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    animation: glitchOverlay 8s infinite;
+}
+
+@keyframes glitchOverlay {
+    0%, 90%, 100% { opacity: 0; }
+    91%, 93% {
+        opacity: 0.3;
+        background: linear-gradient(90deg,
+            #ff0040 0%,
+            transparent 10%,
+            #00ffff 50%,
+            transparent 60%,
+            #00ff41 100%);
+    }
+}

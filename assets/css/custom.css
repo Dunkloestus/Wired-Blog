@@ -453,3 +453,23 @@ ol li::marker {
 .content, .content p, .content div, .content span {
   color: #00ff00 !important;
 }
+
+/* ===== GEOMETRIC BACKGROUND INTEGRATION ===== */
+/* Ensure content is visible above the geometric background */
+body {
+  position: relative;
+}
+
+.container,
+.header,
+.footer,
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure navigation is always on top */
+.menu,
+.header {
+  z-index: 100;
+}
