@@ -1,75 +1,90 @@
 {{ define "main" }}
-<div class="content">
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  
-  <!-- Debug: Check if this appears -->
-  <div style="color: yellow; margin: 20px 0;">
-    DEBUG: Graph container should appear below this line
-  </div>
-  
-  <div id="network-container">
-    <div id="network-graph" style="border: 2px solid red; min-height: 400px;">
-      <div style="color: yellow; padding: 20px;">Loading network graph...</div>
+
+<!-- Immersive Network Graph Container -->
+<div id="network-container">
+  <!-- Main Graph Canvas -->
+  <div id="network-graph">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #00ff00; font-family: 'Fira Code', monospace; text-align: center; pointer-events: none;">
+      <div style="font-size: 24px; margin-bottom: 10px; text-shadow: 0 0 10px #00ff00;">INITIALIZING NETWORK...</div>
+      <div style="font-size: 14px; color: #ff5555;">Building graph topology...</div>
     </div>
-    <div id="graph-info">
-      <h3>Node Information</h3>
-      <div id="node-details">
-        <p>Click on a node to see details</p>
+  </div>
+
+  <!-- Side Information Panel -->
+  <div id="graph-info">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <h3 style="margin: 0;">NETWORK NODE</h3>
+      <a href="/" style="color: #ff5555; text-decoration: none; font-size: 12px; border: 1px solid #ff5555; padding: 4px 8px; border-radius: 4px; transition: all 0.3s ease;"
+         onmouseover="this.style.background='rgba(255,85,85,0.2)'"
+         onmouseout="this.style.background='transparent'">
+        ← BACK
+      </a>
+    </div>
+    <div id="node-details">
+      <div style="padding: 20px; text-align: center; border: 1px dashed #00ff00; border-radius: 4px;">
+        <p style="color: #00ff00; margin: 0 0 10px 0; font-size: 14px;">⚡ INTERACTIVE GRAPH ⚡</p>
+        <p style="color: #ff5555; margin: 0; font-size: 12px; line-height: 1.6;">
+          • Click nodes to view details<br>
+          • Drag nodes to rearrange<br>
+          • Scroll to zoom in/out<br>
+          • Use controls to navigate
+        </p>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.5); border: 1px solid #00ff00; border-radius: 4px;">
+      <h4 style="color: #ff5555; margin: 0 0 10px 0; font-size: 14px; border-bottom: 1px solid #ff5555; padding-bottom: 8px;">LEGEND</h4>
+      <div style="font-size: 12px; line-height: 2;">
+        <div><span style="color: #00ff00;">●</span> Posts</div>
+        <div><span style="color: #ff5555;">●</span> Categories</div>
+        <div><span style="color: #ffff55;">●</span> Tags</div>
       </div>
     </div>
   </div>
-  
-  <!-- Post data for JavaScript -->
-  <script id="posts-data" type="application/json">
-    {
-      "nodes": [
-        {{ range $index, $page := .Site.RegularPages }}
-        {{ if $index }},{{ end }}
-        {
-          "id": "{{ .RelPermalink }}",
-          "title": {{ .Title | jsonify }},
-          "date": "{{ .Date.Format "2006-01-02" }}",
-          "url": "{{ .Permalink }}",
-          "categories": {{ .Params.categories | default slice | jsonify }},
-          "tags": {{ .Params.tags | default slice | jsonify }},
-          "wordCount": {{ .WordCount }},
-          "readingTime": {{ .ReadingTime }},
-          "section": "{{ .Section }}",
-          "type": "post"
-        }
-        {{ end }}
-      ],
-      "links": [
-        {{ $links := slice }}
-        {{ range $page := .Site.RegularPages }}
-          {{ range .Params.categories }}
-            {{ $links = $links | append (dict "source" $page.RelPermalink "target" (printf "category-%s" .) "type" "category") }}
-          {{ end }}
-          {{ range .Params.tags }}
-            {{ $links = $links | append (dict "source" $page.RelPermalink "target" (printf "tag-%s" .) "type" "tag") }}
-          {{ end }}
-        {{ end }}
-        {{ range $index, $link := $links }}
-        {{ if $index }},{{ end }}
-        {
-          "source": "{{ $link.source }}",
-          "target": "{{ $link.target }}",
-          "type": "{{ $link.type }}"
-        }
-        {{ end }}
-      ]
-    }
-  </script>
-
-  <!-- Load D3.js and our script -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-  <script>
-    // Debug: Check if D3 loads
-    console.log("D3 version:", d3.version);
-    console.log("Posts data:", document.getElementById('posts-data').textContent);
-  </script>
-  <script src="/js/network-graph.js"></script>
-  
 </div>
+  
+
+<!-- Post data for JavaScript -->
+<script id="posts-data" type="application/json">
+{
+  "nodes": [
+    {{ range $index, $page := .Site.RegularPages }}
+    {{ if $index }},{{ end }}
+    {
+      "id": "{{ .RelPermalink }}",
+      "title": {{ .Title | jsonify }},
+      "date": "{{ .Date.Format "2006-01-02" }}",
+      "url": "{{ .Permalink }}",
+      "categories": {{ .Params.categories | default slice | jsonify }},
+      "tags": {{ .Params.tags | default slice | jsonify }},
+      "wordCount": {{ .WordCount }},
+      "readingTime": {{ .ReadingTime }},
+      "section": "{{ .Section }}",
+      "type": "post"
+    }
+    {{ end }}
+  ],
+  "links": [
+    {{ $links := slice }}
+    {{ range $page := .Site.RegularPages }}
+      {{ range .Params.categories }}
+        {{ $links = $links | append (dict "source" $page.RelPermalink "target" (printf "category-%s" .) "type" "category") }}
+      {{ end }}
+      {{ range .Params.tags }}
+        {{ $links = $links | append (dict "source" $page.RelPermalink "target" (printf "tag-%s" .) "type" "tag") }}
+      {{ end }}
+    {{ end }}
+    {{ range $index, $link := $links }}
+    {{ if $index }},{{ end }}
+    {
+      "source": "{{ $link.source }}",
+      "target": "{{ $link.target }}",
+      "type": "{{ $link.type }}"
+    }
+    {{ end }}
+  ]
+}
+</script>
+
 {{ end }}

@@ -1,5 +1,5 @@
-// Enhanced Network Graph with Zoom Controls
-console.log("Enhanced network graph script loaded - v3");
+// Immersive Network Graph - Enhanced Version
+console.log("🌐 Immersive Network Graph v4.0 Loading...");
 
 // Helper function to ensure array format
 function ensureArray(value) {
@@ -10,121 +10,169 @@ function ensureArray(value) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("DOM loaded, initializing enhanced network graph");
-  
+  console.log("🚀 Initializing immersive network graph");
+
   // Check if D3 is available
   if (typeof d3 === 'undefined') {
-    console.error("D3.js is not loaded!");
-    const container = document.getElementById('network-graph');
-    if (container) {
-      container.innerHTML = '<div style="color: red; padding: 20px; font-family: Fira Code;">ERROR: D3.js library not loaded</div>';
-    }
+    console.error("❌ D3.js is not loaded!");
+    showError("D3.js library not loaded. Please check your internet connection.");
     return;
   }
-  
-  console.log("D3.js loaded successfully, version:", d3.version);
-  
+
+  console.log("✅ D3.js loaded successfully, version:", d3.version);
+
   // Get posts data
   const dataElement = document.getElementById('posts-data');
   if (!dataElement) {
-    console.error("Posts data element not found!");
-    const container = document.getElementById('network-graph');
-    if (container) {
-      container.innerHTML = '<div style="color: yellow; padding: 20px; font-family: Fira Code;">ERROR: Posts data not found</div>';
-    }
+    console.error("❌ Posts data element not found!");
+    showError("Posts data not found in page.");
     return;
   }
-  
+
   let data;
   try {
     const jsonText = dataElement.textContent;
-    console.log("Raw JSON data:", jsonText.substring(0, 500) + "...");
     data = JSON.parse(jsonText);
-    console.log("Parsed data successfully:", data);
-    console.log("Number of nodes:", data.nodes.length);
-    console.log("Number of links:", data.links.length);
+    console.log("✅ Parsed data successfully");
+    console.log("📊 Nodes:", data.nodes.length, "| Links:", data.links.length);
   } catch (e) {
-    console.error("Error parsing JSON data:", e);
-    const container = document.getElementById('network-graph');
-    if (container) {
-      container.innerHTML = '<div style="color: red; padding: 20px; font-family: Fira Code;">ERROR: Invalid JSON data</div>';
-    }
+    console.error("❌ Error parsing JSON data:", e);
+    showError("Invalid data format. Please check your posts configuration.");
     return;
   }
-  
+
   // Check if we have any data
   if (!data.nodes || data.nodes.length === 0) {
-    console.warn("No nodes found in data");
-    const container = document.getElementById('network-graph');
-    if (container) {
-      container.innerHTML = '<div style="color: yellow; padding: 20px; font-family: Fira Code;">No posts found. Make sure your posts have proper frontmatter.</div>';
-    }
+    console.warn("⚠️ No nodes found in data");
+    showError("No posts found. Create some posts to visualize the network!");
     return;
   }
-  
+
   // Create the enhanced network graph
   createEnhancedNetworkGraph(data);
 });
 
+function showError(message) {
+  const container = document.getElementById('network-graph');
+  if (container) {
+    container.innerHTML = `
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                  text-align: center; font-family: 'Fira Code', monospace; max-width: 500px;">
+        <div style="font-size: 48px; color: #ff5555; margin-bottom: 20px;">⚠</div>
+        <div style="font-size: 18px; color: #ff5555; margin-bottom: 10px; text-shadow: 0 0 10px #ff5555;">ERROR</div>
+        <div style="font-size: 14px; color: #00ff00; line-height: 1.6;">${message}</div>
+        <a href="/" style="display: inline-block; margin-top: 20px; padding: 10px 20px;
+                          background: #ff5555; color: #000; text-decoration: none;
+                          border-radius: 4px; font-weight: bold;">← Back to Home</a>
+      </div>
+    `;
+  }
+}
+
 function createEnhancedNetworkGraph(data) {
-  console.log("Creating enhanced network graph with", data.nodes.length, "nodes");
-  
+  console.log("🎨 Creating immersive network graph with", data.nodes.length, "nodes");
+
   const container = document.getElementById('network-graph');
   if (!container) {
-    console.error("Graph container not found!");
+    console.error("❌ Graph container not found!");
     return;
   }
-  
+
   // Clear container completely
   container.innerHTML = '';
-  
+
   // Create control panel
   const controls = document.createElement('div');
   controls.style.cssText = `
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 20px;
+    left: 20px;
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 12px;
+    border: 2px solid #ff5555;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(255, 85, 85, 0.4);
   `;
-  
+
+  // Control label
+  const controlLabel = document.createElement('div');
+  controlLabel.textContent = 'CONTROLS';
+  controlLabel.style.cssText = `
+    color: #ff5555;
+    font-family: 'Fira Code', monospace;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 4px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px #ff5555;
+  `;
+  controls.appendChild(controlLabel);
+
   // Zoom controls
   const zoomIn = createButton('+', 'Zoom In');
   const zoomOut = createButton('−', 'Zoom Out');
   const resetView = createButton('⌂', 'Reset View');
   const fullscreen = createButton('⛶', 'Fullscreen');
-  
+
   controls.appendChild(zoomIn);
   controls.appendChild(zoomOut);
   controls.appendChild(resetView);
   controls.appendChild(fullscreen);
   container.appendChild(controls);
-  
+
   // Create zoom level indicator
   const zoomIndicator = document.createElement('div');
   zoomIndicator.style.cssText = `
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    bottom: 20px;
+    left: 20px;
     z-index: 1000;
     color: #00ff00;
     font-family: 'Fira Code', monospace;
-    font-size: 12px;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 5px 10px;
-    border: 1px solid #00ff00;
-    border-radius: 4px;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 15px;
+    border: 2px solid #00ff00;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+    text-shadow: 0 0 5px #00ff00;
   `;
   zoomIndicator.textContent = 'ZOOM: 100%';
   container.appendChild(zoomIndicator);
-  
-  // Set dimensions
-  const width = container.clientWidth || 800;
-  const height = container.clientHeight || 600;
-  
-  console.log("Graph dimensions:", width, "x", height);
+
+  // Create stats indicator
+  const statsIndicator = document.createElement('div');
+  statsIndicator.style.cssText = `
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    color: #ffff55;
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 15px;
+    border: 2px solid #ffff55;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(255, 255, 85, 0.4);
+    text-align: right;
+  `;
+  statsIndicator.innerHTML = `
+    <div style="font-weight: bold; margin-bottom: 5px; color: #ff5555;">NETWORK STATS</div>
+    <div>Nodes: ${data.nodes.length}</div>
+  `;
+  container.appendChild(statsIndicator);
+
+  // Set dimensions to full viewport
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  console.log("📐 Graph dimensions:", width, "x", height);
   
   // Create SVG with zoom behavior
   const svg = d3.select("#network-graph")
@@ -191,12 +239,14 @@ function createEnhancedNetworkGraph(data) {
   console.log("Total nodes:", allNodes.length);
   console.log("Total links:", allLinks.length);
   
-  // Create force simulation
+  // Create force simulation with enhanced parameters for larger screen
   const simulation = d3.forceSimulation(allNodes)
-    .force("link", d3.forceLink(allLinks).id(d => d.id).distance(100))
-    .force("charge", d3.forceManyBody().strength(-400))
+    .force("link", d3.forceLink(allLinks).id(d => d.id).distance(150))
+    .force("charge", d3.forceManyBody().strength(-600))
     .force("center", d3.forceCenter(width / 2, height / 2))
-    .force("collision", d3.forceCollide().radius(35));
+    .force("collision", d3.forceCollide().radius(45))
+    .force("x", d3.forceX(width / 2).strength(0.05))
+    .force("y", d3.forceY(height / 2).strength(0.05));
   
   // Create links
   const link = g.append("g")
@@ -233,17 +283,17 @@ function createEnhancedNetworkGraph(data) {
   feMerge.append("feMergeNode").attr("in", "coloredBlur");
   feMerge.append("feMergeNode").attr("in", "SourceGraphic");
   
-  // Create nodes
+  // Create nodes with larger sizes for immersive experience
   const node = g.append("g")
     .selectAll("circle")
     .data(allNodes)
     .enter().append("circle")
     .attr("r", d => {
       switch(d.type) {
-        case 'post': return 12;
-        case 'category': return 16;
-        case 'tag': return 8;
-        default: return 10;
+        case 'post': return 16;
+        case 'category': return 22;
+        case 'tag': return 12;
+        default: return 14;
       }
     })
     .attr("fill", d => {
@@ -274,42 +324,66 @@ function createEnhancedNetworkGraph(data) {
       d3.select(this)
         .transition()
         .duration(200)
-        .attr("r", d.type === 'post' ? 16 : d.type === 'category' ? 20 : 12)
-        .style("filter", "url(#glow) brightness(1.5)");
-      
+        .attr("r", d.type === 'post' ? 22 : d.type === 'category' ? 28 : 18)
+        .style("filter", "url(#glow) brightness(1.8)");
+
       // Highlight connected links
-      link.style("stroke-opacity", l => 
-        (l.source === d || l.target === d) ? 1 : 0.2
+      link.style("stroke-opacity", l =>
+        (l.source === d || l.target === d) ? 1 : 0.15
+      ).style("stroke-width", l =>
+        (l.source === d || l.target === d) ? 4 : 2
       );
+
+      // Show quick preview in stats
+      statsIndicator.innerHTML = `
+        <div style="font-weight: bold; margin-bottom: 5px; color: #ff5555;">NODE PREVIEW</div>
+        <div style="color: #00ff00;">${d.title}</div>
+        <div style="font-size: 10px; margin-top: 5px; color: #ffff55;">Type: ${d.type}</div>
+      `;
     })
     .on("mouseout", function(event, d) {
       d3.select(this)
         .transition()
         .duration(200)
-        .attr("r", d.type === 'post' ? 12 : d.type === 'category' ? 16 : 8)
+        .attr("r", d.type === 'post' ? 16 : d.type === 'category' ? 22 : 12)
         .style("filter", "url(#glow)");
-      
-      // Reset link opacity
-      link.style("stroke-opacity", 0.6);
+
+      // Reset link opacity and width
+      link.style("stroke-opacity", 0.6)
+          .style("stroke-width", 2);
+
+      // Reset stats
+      statsIndicator.innerHTML = `
+        <div style="font-weight: bold; margin-bottom: 5px; color: #ff5555;">NETWORK STATS</div>
+        <div>Nodes: ${allNodes.length}</div>
+      `;
     });
   
-  // Add labels
+  // Add labels with larger font for immersive view
   const label = g.append("g")
     .selectAll("text")
     .data(allNodes)
     .enter().append("text")
     .text(d => {
       const title = d.title || "Untitled";
-      return title.length > 15 ? title.substring(0, 15) + "..." : title;
+      return title.length > 20 ? title.substring(0, 20) + "..." : title;
     })
-    .attr("font-size", "10px")
+    .attr("font-size", "13px")
     .attr("font-family", "Fira Code, monospace")
-    .attr("fill", "#00ff00")
+    .attr("fill", d => {
+      switch(d.type) {
+        case 'post': return "#00ff00";
+        case 'category': return "#ff5555";
+        case 'tag': return "#ffff55";
+        default: return "#00ff00";
+      }
+    })
     .attr("text-anchor", "middle")
     .attr("dy", ".35em")
     .style("pointer-events", "none")
-    .style("text-shadow", "0 0 3px #00ff00")
-    .style("user-select", "none");
+    .style("text-shadow", "0 0 5px currentColor")
+    .style("user-select", "none")
+    .style("font-weight", "bold");
   
   // Zoom event handler
   function handleZoom(event) {
@@ -394,7 +468,17 @@ function createEnhancedNetworkGraph(data) {
     event.preventDefault();
   });
   
-  console.log("Enhanced network graph created successfully!");
+  // Add window resize handler
+  window.addEventListener('resize', () => {
+    const newWidth = window.innerWidth;
+    const newHeight = window.innerHeight;
+    svg.attr("width", newWidth).attr("height", newHeight);
+    simulation.force("center", d3.forceCenter(newWidth / 2, newHeight / 2));
+    simulation.alpha(0.3).restart();
+  });
+
+  console.log("✅ Immersive network graph created successfully!");
+  console.log("🎯 Use mouse to interact with the network");
 }
 
 function createButton(text, title) {
@@ -402,31 +486,35 @@ function createButton(text, title) {
   button.textContent = text;
   button.title = title;
   button.style.cssText = `
-    width: 30px;
-    height: 30px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid #ff5555;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #00ff00;
     color: #00ff00;
     font-family: 'Fira Code', monospace;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 6px;
     transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
   `;
-  
+
   button.onmouseover = () => {
-    button.style.background = 'rgba(255, 85, 85, 0.2)';
+    button.style.background = 'rgba(0, 255, 0, 0.2)';
     button.style.color = '#ffffff';
-    button.style.boxShadow = '0 0 10px rgba(255, 85, 85, 0.5)';
+    button.style.boxShadow = '0 0 20px rgba(0, 255, 0, 0.6)';
+    button.style.transform = 'scale(1.1)';
+    button.style.borderColor = '#00ff00';
   };
-  
+
   button.onmouseout = () => {
-    button.style.background = 'rgba(0, 0, 0, 0.8)';
+    button.style.background = 'rgba(0, 0, 0, 0.9)';
     button.style.color = '#00ff00';
-    button.style.boxShadow = 'none';
+    button.style.boxShadow = '0 0 10px rgba(0, 255, 0, 0.3)';
+    button.style.transform = 'scale(1)';
   };
-  
+
   return button;
 }
 
