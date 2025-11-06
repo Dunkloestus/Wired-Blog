@@ -4,7 +4,7 @@
 
 {{ range .Site.RegularPages }}
   {{ if eq .Type "posts" }}
-    {{ $post := dict "title" .Title "url" .RelPermalink "date" (.Date.Format "2006-01-02") "categories" (.Params.categories | default slice) "tags" (.Params.tags | default slice) }}
+    {{ $post := dict "title" .Title "url" .Permalink "date" (.Date.Format "2006-01-02") "categories" (.Params.categories | default slice) "tags" (.Params.tags | default slice) }}
     {{ $posts = $posts | append $post }}
 
     {{ range .Params.categories }}
@@ -21,7 +21,7 @@
 
 <div id="mini-graph-widget" class="mini-graph-container">
   <div class="mini-graph-link">
-    <a href="/graph" class="mini-graph-header" title="View Full Graph">
+    <a href="{{ "/graph" | relURL }}" class="mini-graph-header" title="View Full Graph">
       <span class="mini-graph-title">⊕ THE WIRED</span>
       <span class="mini-graph-status">CONNECTED</span>
     </a>
