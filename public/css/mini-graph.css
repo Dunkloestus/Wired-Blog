@@ -7,8 +7,8 @@
   position: fixed;
   top: 20px;
   right: 20px;
-  width: 200px;
-  height: 180px;
+  width: 350px;
+  height: 300px;
   z-index: 9999;
   pointer-events: auto;
   transition: all 0.3s ease;
@@ -48,6 +48,12 @@
   border-bottom: 1px solid #00ff00;
   position: relative;
   z-index: 2;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.mini-graph-header:hover {
+  background: rgba(0, 17, 0, 0.9);
 }
 
 .mini-graph-title {
@@ -107,25 +113,25 @@
 .mini-graph-svg .node.post circle {
   fill: #00ff00;
   stroke: #00ff00;
-  r: 4;
+  r: 6;
 }
 
 .mini-graph-svg .node.category circle {
   fill: #ff5555;
   stroke: #ff5555;
-  r: 6;
+  r: 9;
 }
 
 .mini-graph-svg .node.tag circle {
   fill: #ffff55;
   stroke: #ffff55;
-  r: 3;
+  r: 5;
 }
 
 /* Link Styles */
 .mini-graph-svg .link {
-  stroke-opacity: 0.4;
-  stroke-width: 0.5px;
+  stroke-opacity: 0.5;
+  stroke-width: 1px;
 }
 
 .mini-graph-svg .link.category-link {
@@ -184,6 +190,48 @@
   );
 }
 
+/* Tooltip */
+.mini-graph-tooltip {
+  position: absolute;
+  padding: 8px 12px;
+  background: rgba(0, 17, 0, 0.98);
+  border: 1px solid #00ff00;
+  border-radius: 4px;
+  color: #00ff00;
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 10000;
+  white-space: nowrap;
+  box-shadow:
+    0 0 10px rgba(0, 255, 0, 0.5),
+    inset 0 0 5px rgba(0, 255, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+.mini-graph-tooltip.visible {
+  opacity: 1;
+}
+
+.mini-graph-tooltip.post {
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+.mini-graph-tooltip.category {
+  border-color: #ff5555;
+  color: #ff5555;
+  text-shadow: 0 0 5px rgba(255, 85, 85, 0.8);
+}
+
+.mini-graph-tooltip.tag {
+  border-color: #ffff55;
+  color: #ffff55;
+  text-shadow: 0 0 5px rgba(255, 255, 85, 0.8);
+}
+
 /* Animations */
 @keyframes pulse-expand {
   0%, 100% {
@@ -237,12 +285,19 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .mini-graph-container {
+    width: 280px;
+    height: 240px;
+  }
+}
+
 @media (max-width: 768px) {
   .mini-graph-container {
     top: 10px;
     right: 10px;
-    width: 150px;
-    height: 140px;
+    width: 200px;
+    height: 180px;
   }
 
   .mini-graph-header {
@@ -260,8 +315,8 @@
 
 @media (max-width: 480px) {
   .mini-graph-container {
-    width: 120px;
-    height: 110px;
+    width: 150px;
+    height: 140px;
   }
 
   .mini-graph-header {

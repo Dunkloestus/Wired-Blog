@@ -20,14 +20,14 @@
 {{ $siteData := dict "posts" $posts "categories" $categories "tags" $tags }}
 
 <div id="mini-graph-widget" class="mini-graph-container">
-  <a href="/graph" class="mini-graph-link" title="Enter The Wired">
-    <div class="mini-graph-header">
+  <div class="mini-graph-link">
+    <a href="/graph" class="mini-graph-header" title="View Full Graph">
       <span class="mini-graph-title">⊕ THE WIRED</span>
       <span class="mini-graph-status">CONNECTED</span>
-    </div>
+    </a>
     <svg id="mini-graph-svg" class="mini-graph-svg"></svg>
     <div class="mini-graph-pulse"></div>
-  </a>
+  </div>
   <script>
     window.miniGraphData = {{ $siteData | jsonify | safeJS }};
   </script>

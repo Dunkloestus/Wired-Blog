@@ -103,8 +103,8 @@
       return;
     }
 
-    const width = container.clientWidth || 200;
-    const height = container.clientHeight || 150;
+    const width = container.clientWidth || 350;
+    const height = container.clientHeight || 300;
 
     const svg = d3.select('#mini-graph-svg')
       .attr('viewBox', `0 0 ${width} ${height}`)
@@ -117,12 +117,12 @@
     const simulation = d3.forceSimulation(nodes)
       .force('link', d3.forceLink(links)
         .id(d => d.id)
-        .distance(20)
+        .distance(35)
         .strength(0.3))
       .force('charge', d3.forceManyBody()
-        .strength(-30))
+        .strength(-50))
       .force('center', d3.forceCenter(width / 2, height / 2))
-      .force('collision', d3.forceCollide().radius(8))
+      .force('collision', d3.forceCollide().radius(12))
       .alpha(0.5)
       .alphaDecay(0.05);
 
@@ -139,8 +139,14 @@
         if (d.type === 'tag-link') return '#00ff00';
         return '#00ff00';
       })
-      .attr('stroke-opacity', 0.4)
-      .attr('stroke-width', 0.5);
+      .attr('stroke-opacity', 0.5)
+      .attr('stroke-width', 1);
+
+    // Create tooltip
+    const tooltip = d3.select('body').append('div')
+      .attr('class', 'mini-graph-tooltip')
+      .style('position', 'absolute')
+      .style('opacity', 0);
 
     // Create nodes
     const node = svg.append('g')
@@ -150,14 +156,14 @@
       .enter()
       .append('g')
       .attr('class', d => `node ${d.type}`)
-      .style('cursor', d => d.type === 'post' ? 'pointer' : 'default');
+      .style('cursor', 'pointer');
 
     // Add circles to nodes
     node.append('circle')
       .attr('r', d => {
-        if (d.type === 'category') return 6;
-        if (d.type === 'tag') return 3;
-        return 4; // post
+        if (d.type === 'category') return 9;
+        if (d.type === 'tag') return 5;
+        return 6; // post
       })
       .attr('fill', d => {
         if (d.type === 'category') return '#ff5555';
@@ -170,6 +176,58 @@
         return '#00ff00'; // post
       })
       .attr('stroke-width', 1.5);
+
+    // Add hover and click handlers
+    node.on('mouseenter', function(event, d) {
+      // Show tooltip
+      tooltip
+        .attr('class', `mini-graph-tooltip visible ${d.type}`)
+        .html(d.label)
+        .style('left', (event.pageX + 15) + 'px')
+        .style('top', (event.pageY - 10) + 'px')
+        .style('opacity', 1);
+
+      // Highlight node
+      d3.select(this).select('circle')
+        .transition()
+        .duration(150)
+        .attr('r', d => {
+          if (d.type === 'category') return 11;
+          if (d.type === 'tag') return 6.5;
+          return 8;
+        });
+    })
+    .on('mousemove', function(event) {
+      // Update tooltip position
+      tooltip
+        .style('left', (event.pageX + 15) + 'px')
+        .style('top', (event.pageY - 10) + 'px');
+    })
+    .on('mouseleave', function(event, d) {
+      // Hide tooltip
+      tooltip
+        .style('opacity', 0);
+
+      // Reset node size
+      d3.select(this).select('circle')
+        .transition()
+        .duration(150)
+        .attr('r', d => {
+          if (d.type === 'category') return 9;
+          if (d.type === 'tag') return 5;
+          return 6;
+        });
+    })
+    .on('click', function(event, d) {
+      // Prevent default link behavior
+      event.preventDefault();
+      event.stopPropagation();
+
+      // Navigate to post URL if it's a post node
+      if (d.type === 'post' && d.url) {
+        window.location.href = d.url;
+      }
+    });
 
     // Update positions on simulation tick
     simulation.on('tick', () => {
@@ -193,37 +251,11 @@
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        const newWidth = container.clientWidth || 200;
-        const newHeight = container.clientHeight || 150;
+        const newWidth = container.clientWidth || 350;
+        const newHeight = container.clientHeight || 300;
         svg.attr('viewBox', `0 0 ${newWidth} ${newHeight}`);
       }, 250);
     });
-
-    // Add subtle animation on hover
-    const miniGraphContainer = document.querySelector('.mini-graph-container');
-    if (miniGraphContainer) {
-      miniGraphContainer.addEventListener('mouseenter', () => {
-        node.selectAll('circle')
-          .transition()
-          .duration(200)
-          .attr('r', d => {
-            if (d.type === 'category') return 7;
-            if (d.type === 'tag') return 3.5;
-            return 5;
-          });
-      });
-
-      miniGraphContainer.addEventListener('mouseleave', () => {
-        node.selectAll('circle')
-          .transition()
-          .duration(200)
-          .attr('r', d => {
-            if (d.type === 'category') return 6;
-            if (d.type === 'tag') return 3;
-            return 4;
-          });
-      });
-    }
 
     console.log('Mini graph initialized with', nodes.length, 'nodes and', links.length, 'links');
   }
