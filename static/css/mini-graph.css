@@ -1,0 +1,293 @@
+/* ===================================
+   MINI GRAPH WIDGET - LAIN INSPIRED
+   Compact navigation widget
+   =================================== */
+
+.mini-graph-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 180px;
+  z-index: 9999;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+.mini-graph-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #00ff00;
+  position: relative;
+  background: rgba(0, 17, 0, 0.95);
+  border: 2px solid #00ff00;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    0 0 10px rgba(0, 255, 0, 0.3),
+    inset 0 0 10px rgba(0, 255, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mini-graph-link:hover {
+  border-color: #ff5555;
+  box-shadow:
+    0 0 20px rgba(255, 85, 85, 0.5),
+    inset 0 0 15px rgba(255, 85, 85, 0.2);
+  transform: scale(1.02);
+}
+
+.mini-graph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid #00ff00;
+  position: relative;
+  z-index: 2;
+}
+
+.mini-graph-title {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  animation: text-glitch 3s infinite;
+}
+
+.mini-graph-status {
+  font-size: 9px;
+  color: #ffff55;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: blink-pulse 2s infinite;
+}
+
+/* SVG Container */
+.mini-graph-svg {
+  width: 100%;
+  height: calc(100% - 36px);
+  display: block;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+/* Pulsing Background Effect */
+.mini-graph-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  margin: -40px 0 0 -40px;
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse-expand 3s infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Node Styles for Mini Graph */
+.mini-graph-svg .node {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mini-graph-svg .node circle {
+  stroke-width: 1.5px;
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+.mini-graph-svg .node.post circle {
+  fill: #00ff00;
+  stroke: #00ff00;
+  r: 4;
+}
+
+.mini-graph-svg .node.category circle {
+  fill: #ff5555;
+  stroke: #ff5555;
+  r: 6;
+}
+
+.mini-graph-svg .node.tag circle {
+  fill: #ffff55;
+  stroke: #ffff55;
+  r: 3;
+}
+
+/* Link Styles */
+.mini-graph-svg .link {
+  stroke-opacity: 0.4;
+  stroke-width: 0.5px;
+}
+
+.mini-graph-svg .link.category-link {
+  stroke: #ff5555;
+}
+
+.mini-graph-svg .link.tag-link {
+  stroke: #00ff00;
+}
+
+/* Hover Effects */
+.mini-graph-container:hover .mini-graph-svg .node circle {
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+.mini-graph-container:hover .mini-graph-pulse {
+  animation: pulse-expand-fast 1.5s infinite;
+}
+
+/* Scanline Effect */
+.mini-graph-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 0, 0.03) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 3px
+  );
+  pointer-events: none;
+  z-index: 3;
+  animation: scanline-move 8s linear infinite;
+}
+
+/* Corner Brackets (Lain Style) */
+.mini-graph-link::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  pointer-events: none;
+  z-index: 4;
+  clip-path: polygon(
+    0 0, 15px 0, 15px 1px, 1px 1px, 1px 15px, 0 15px,
+    0 100%, 15px 100%, 15px calc(100% - 1px), 1px calc(100% - 1px), 1px calc(100% - 15px), 0 calc(100% - 15px),
+    100% 100%, 100% calc(100% - 15px), calc(100% - 1px) calc(100% - 15px), calc(100% - 1px) calc(100% - 1px), calc(100% - 15px) calc(100% - 1px), calc(100% - 15px) 100%,
+    100% 0, calc(100% - 15px) 0, calc(100% - 15px) 1px, calc(100% - 1px) 1px, calc(100% - 1px) 15px, 100% 15px
+  );
+}
+
+/* Animations */
+@keyframes pulse-expand {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.1;
+  }
+}
+
+@keyframes pulse-expand-fast {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0.05;
+  }
+}
+
+@keyframes blink-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes text-glitch {
+  0%, 90%, 100% {
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  }
+  92%, 96% {
+    text-shadow:
+      -2px 0 5px rgba(255, 0, 0, 0.8),
+      2px 0 5px rgba(0, 255, 255, 0.8);
+  }
+}
+
+@keyframes scanline-move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mini-graph-container {
+    top: 10px;
+    right: 10px;
+    width: 150px;
+    height: 140px;
+  }
+
+  .mini-graph-header {
+    padding: 6px 8px;
+  }
+
+  .mini-graph-title {
+    font-size: 9px;
+  }
+
+  .mini-graph-status {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mini-graph-container {
+    width: 120px;
+    height: 110px;
+  }
+
+  .mini-graph-header {
+    padding: 5px 6px;
+  }
+
+  .mini-graph-title {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .mini-graph-status {
+    font-size: 7px;
+  }
+}
+
+/* Hide on very small screens when keyboard is open */
+@media (max-width: 360px) {
+  .mini-graph-container {
+    display: none;
+  }
+}
+
+/* Print - Hide widget */
+@media print {
+  .mini-graph-container {
+    display: none;
+  }
+}

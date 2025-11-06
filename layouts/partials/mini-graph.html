@@ -1,0 +1,34 @@
+{{ $posts := slice }}
+{{ $categories := dict }}
+{{ $tags := dict }}
+
+{{ range .Site.RegularPages }}
+  {{ if eq .Type "posts" }}
+    {{ $post := dict "title" .Title "url" .RelPermalink "date" (.Date.Format "2006-01-02") "categories" (.Params.categories | default slice) "tags" (.Params.tags | default slice) }}
+    {{ $posts = $posts | append $post }}
+
+    {{ range .Params.categories }}
+      {{ $categories = merge $categories (dict . true) }}
+    {{ end }}
+
+    {{ range .Params.tags }}
+      {{ $tags = merge $tags (dict . true) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $siteData := dict "posts" $posts "categories" $categories "tags" $tags }}
+
+<div id="mini-graph-widget" class="mini-graph-container">
+  <a href="/graph" class="mini-graph-link" title="Enter The Wired">
+    <div class="mini-graph-header">
+      <span class="mini-graph-title">⊕ THE WIRED</span>
+      <span class="mini-graph-status">CONNECTED</span>
+    </div>
+    <svg id="mini-graph-svg" class="mini-graph-svg"></svg>
+    <div class="mini-graph-pulse"></div>
+  </a>
+  <script>
+    window.miniGraphData = {{ $siteData | jsonify | safeJS }};
+  </script>
+</div>

@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Categories on My New Hugo Site</title>
-    <link>http://localhost:1313/categories/</link>
-    <description>Recent content in Categories on My New Hugo Site</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on Wired Blog</title><link>https://dunkloestus.github.io/Wired-Blog/categories/</link><description>Recent content in Categories on Wired Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 25 Sep 2025 12:00:00 +0100</lastBuildDate><atom:link href="https://dunkloestus.github.io/Wired-Blog/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog</title><link>https://dunkloestus.github.io/Wired-Blog/categories/blog/</link><pubDate>Thu, 25 Sep 2025 12:00:00 +0100</pubDate><guid>https://dunkloestus.github.io/Wired-Blog/categories/blog/</guid><description/></item><item><title>Thoughts</title><link>https://dunkloestus.github.io/Wired-Blog/categories/thoughts/</link><pubDate>Sun, 20 Jul 2025 00:45:00 +0300</pubDate><guid>https://dunkloestus.github.io/Wired-Blog/categories/thoughts/</guid><description/></item><item><title>Reviews</title><link>https://dunkloestus.github.io/Wired-Blog/categories/reviews/</link><pubDate>Mon, 07 Jul 2025 12:00:00 +0100</pubDate><guid>https://dunkloestus.github.io/Wired-Blog/categories/reviews/</guid><description/></item></channel></rss>
