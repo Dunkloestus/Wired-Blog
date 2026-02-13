@@ -1,5 +1,5 @@
 ---
-title: Back at it
+title: Lazarus Taxa
 date: 2026-02-10T12:00:00+01:00
 draft: false
 share: true
