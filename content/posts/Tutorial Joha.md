@@ -1,6 +1,6 @@
 ---
 title: Tutorial para Joha
-date: 2026-07-04T12:00:00+01:00
+date: 2026-07-03T12:00:00+01:00
 draft: false
 share: true
 tags:
